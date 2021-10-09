@@ -1,0 +1,536 @@
+@import '../../app.scss';
+
+.qz-match-item-small {
+  width: 85vw !important;
+}
+
+.qz-match-item-no-margin {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.qz-match-item-margin {
+  margin: 1vw 0 0 0 !important;
+  border-radius: 0 !important;
+}
+
+.qz-match-item {
+  margin: 2vw 0;
+  width: 90vw;
+  //height: $at-avatar-size-lg + $spacing-v-md + $spacing-v-xs + $font-size-sm * 2 * $line-height-en - $font-size-sm * ($line-height-en - 1) * 2;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  padding: $spacing-v-md/2 0;
+
+  &-content {
+    //height: $at-avatar-size-lg + $spacing-v-md + $spacing-v-xs + $font-size-sm * 2 * $line-height-en - $font-size-sm * ($line-height-en - 1) * 2;
+    width: 100%;
+    position: relative;
+    display: flex;
+  }
+
+  &__charge {
+    position: absolute;
+    top: 0;
+    left: 1.5vw;
+    font-size: $font-size-xs;
+    color: $color-white;
+    background-color: $color_warning;
+    border-radius: $border-radius-md;
+    padding: $spacing-v-xxs $spacing-v-xs;
+    z-index: 1;
+    &-user {
+      display: flex;
+      align-items: center;
+
+      .avatar {
+        display: inline-block;
+        height: $font-size-lg;
+        min-height: $font-size-lg;
+        width: $font-size-lg;
+        min-width: $font-size-lg;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__team {
+    vertical-align: middle;
+    display: inline-block;
+    height: $at-avatar-size-lg + $spacing-v-md + $spacing-v-xs + $font-size-sm * 2 * $line-height-en - $font-size-sm * ($line-height-en - 1) * 2;
+    //width: 30 / 100 * 90vw;
+    width: 30%;
+    overflow: hidden;
+    margin-top: $spacing-v-md/2;
+
+    &-avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      image {
+        border-radius: 50%;
+        background-clip: border-box;
+        overflow: hidden;
+        width: 120px;
+        height: 120px;
+        font-size: 48px;
+        line-height: 120px;
+      }
+    }
+
+    &-name {
+      display: flex !important;
+      margin-top: $spacing-v-xs;
+      font-size: $font-size-sm;
+      color: $color-text-base;
+      line-height: $line-height-en;
+      width: 100%;
+      height: $font-size-sm * 2 * $line-height-en !important;
+      text-align: center;
+      display: -webkit-box;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      word-break: break-all;
+      white-space: normal !important;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  &-against {
+    &__teams {
+      width: 70%;
+    }
+
+    &__score {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      font-size: $font-size-sm;
+      color: $color-text-title;
+      line-height: 1.1;
+      letter-spacing: $spacing-v-xs;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-50%);
+    }
+
+    &__team-against {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border-style: solid;
+      border-width: 0 0 1px 0;
+      border-color: $color-bg-grey-dark;
+    }
+    &__team-against:last-child {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border:none;
+    }
+
+    &__team {
+      vertical-align: middle;
+      display: inline-block;
+      width: 50%;
+      overflow: hidden;
+      margin-top: $spacing-v-md/2;
+
+      &-avatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        image {
+          border-radius: 50%;
+          background-clip: border-box;
+          overflow: hidden;
+          width: 40px;
+          height: 40px;
+          line-height: 40px;
+        }
+      }
+
+      &-name {
+        display: flex !important;
+        font-size: $font-size-xs;
+        color: $color-text-base;
+        line-height: $line-height-base;
+        width: 100%;
+        height: $font-size-xs * 2 * $line-height-base !important;
+        text-align: center;
+        display: -webkit-box;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: normal !important;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+
+  &__vs-against {
+    width: 30%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 $spacing-v-sm;
+
+    &-divider {
+      height: 80%;
+      background-color: $color-bg-grey-dark;
+      width: 2px;
+      margin: 0 $spacing-v-sm;
+    }
+
+    &-content {
+      width: 100%;
+      overflow: hidden;
+      text-align: center;
+      position: relative;
+    }
+    &-league-img {
+      border-radius: 50%;
+      background-clip: border-box;
+      overflow: hidden;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+    }
+    &-league-name {
+      font-size: $font-size-xs;
+      line-height: $line-height-base;
+      color: $color-text-paragraph;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+    }
+
+    &-match-time {
+      font-size: $font-size-xs;
+      color: $color-text-placeholder;
+      width: 100%;
+      line-height: $line-height-base;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      //position: absolute;
+      //bottom: $spacing-v-xs;
+    }
+
+    &-match-round {
+      font-size: $font-size-xs;
+      color: $color-text-paragraph;
+      width: 100%;
+      line-height: $line-height-base;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin: $spacing-h-sm 0;
+    }
+    &-match-status {
+      display: flex;
+      justify-content: center;
+      margin: $spacing-h-sm 0;
+
+      .status-box {
+        display: inline-block;
+        font-size: $font-size-xs;
+
+        .live {
+          background-color: #63af2b;
+        }
+
+        .finish {
+          background-color: #7ab8f4;
+        }
+
+        .unopen {
+          background-color: #e27c77;
+        }
+
+        .background {
+          padding: $font-size-xs * 0.2;
+          min-height: $font-size-xs * 2;
+          border-radius: $font-size-xs;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+        }
+
+        .none {
+          display: none;
+        }
+
+        .text {
+          color: $color-text-base-inverse;
+          margin-left: $spacing-h-sm;
+        }
+
+        .text-disabled {
+          color: $color-text-disabled;
+          margin-left: 0;
+        }
+
+        .status-icon {
+          border-radius: 50%;
+          width: $font-size-xs * 1.6;
+          height: $font-size-xs * 1.6;
+          margin-left: $font-size-xs * 0.1;
+          background: #fff;
+          position: relative;
+
+          .icon {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 0 8px 16px;
+            border-color: #fff #fff #fff transparent;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -7px 0 0 -5px;
+          }
+        }
+      }
+    }
+  }
+
+  &__vs {
+    margin-top: -1 * $spacing-v-sm;
+    vertical-align: middle;
+    //display: inline-block;
+    //width: 40 / 100 * 90vw;
+    width: 40%;
+    height: $at-avatar-size-lg + $spacing-v-md + $spacing-v-xs + $font-size-sm * 2 * $line-height-en - $font-size-sm * ($line-height-en - 1) * 2;
+    //overflow: hidden;
+    //text-overflow: ellipsis;
+    //white-space: nowrap;
+    //text-align: center;
+    //position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    &-content {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
+      position: relative;
+    }
+
+    &-league-name {
+      font-size: $font-size-xs;
+      line-height: $line-height-base;
+      color: $color-text-paragraph;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      text-align: center;
+    }
+
+    &-match-time {
+      font-size: $font-size-sm;
+      color: $color-text-placeholder;
+      width: 100%;
+      line-height: $line-height-en;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin-top: $spacing-v-xs/2;
+      //position: absolute;
+      //bottom: $spacing-v-xs;
+    }
+
+    &-match-round {
+      font-size: $font-size-xs;
+      color: $color-text-placeholder;
+      width: 100%;
+      line-height: $line-height-en;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    &-match-name {
+      font-size: $font-size-base;
+      color: $color-text-title;
+      width: 100%;
+      line-height: $line-height-zh;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    &-match-score {
+      font-size: $font-size-xxl;
+      color: $color-text-title;
+      width: 100%;
+      line-height: 1.1;
+      letter-spacing: $spacing-v-xs;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    &-match-score-small {
+      font-size: $font-size-lg !important;
+    }
+
+    &-match-score-penalty {
+      font-size: $font-size-xs;
+      color: $color-text-placeholder;
+      width: 100%;
+      letter-spacing: $spacing-v-xs;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    &-match-status {
+      display: flex;
+      justify-content: center;
+
+      .status-box {
+        display: inline-block;
+        font-size: $font-size-xs;
+
+        .live {
+          background-color: #63af2b;
+        }
+
+        .finish {
+          background-color: #7ab8f4;
+        }
+
+        .unopen {
+          background-color: #e27c77;
+        }
+
+        .background {
+          padding: $font-size-xs * 0.2;
+          height: $font-size-xs * 2;
+          border-radius: $font-size-xs;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+        }
+
+        .none {
+          display: none;
+        }
+
+        .text {
+          color: $color-text-base-inverse;
+          margin-left: $spacing-h-sm;
+        }
+
+        .text-disabled {
+          color: $color-text-disabled;
+          margin-left: 0;
+        }
+
+        .status-icon {
+          border-radius: 50%;
+          width: $font-size-xs * 1.6;
+          height: $font-size-xs * 1.6;
+          margin-left: $font-size-xs * 0.1;
+          background: #fff;
+          position: relative;
+
+          .icon {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 0 8px 16px;
+            border-color: #fff #fff #fff transparent;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -7px 0 0 -5px;
+          }
+        }
+      }
+    }
+  }
+
+  &__vs-full {
+    width: 100% !important;
+    margin-top: 0 !important;
+
+    .qz-match-item__vs-match-name {
+      display: inline !important;
+    }
+  }
+
+  .qz-match-item-top-skewed {
+    width: 160px;
+    height: 48px;
+    position: absolute;
+    text-decoration: none;
+    display: inline-block;
+    left: 50%;
+    top: -10px;
+    transform: translateX(-50%);
+    z-index: $zindex-divider;
+  }
+
+  .qz-match-item-top-skewed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $color-bg-orange-main;
+    border-radius: 0px 0px 10px 10px;
+    transform: perspective(0.5em) rotateX(-5deg);
+    transform-origin: top;
+    z-index: -1;
+  }
+
+  .qz-match-item-top-skewed-center-text {
+    height: 36px;
+    width: 100%;
+    font-size: $font-size-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: $zindex-divider;
+    color: $color-text-base-inverse;
+  }
+}
+
+.qz-match-item-big {
+  //height: $at-avatar-size-lg + $spacing-v-md + $spacing-v-xs + $font-size-sm * 2 * $line-height-en - $font-size-sm * ($line-height-en - 1) * 2 + 30px;
+
+  .qz-match-item-content-big {
+    //height: $at-avatar-size-lg + $spacing-v-md + $spacing-v-xs + $font-size-sm * 2 * $line-height-en - $font-size-sm * ($line-height-en - 1) * 2 + 30px;
+    padding: $spacing-v-md/2 + 15px 0 $spacing-v-md/2 0;
+  }
+}

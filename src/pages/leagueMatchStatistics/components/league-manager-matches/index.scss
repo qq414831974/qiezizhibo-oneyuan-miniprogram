@@ -1,0 +1,56 @@
+@import '../../../../app.scss';
+
+.qz-league-manager-matches__result {
+  position: relative;
+  &-loading {
+    width: 100vw;
+    height: 10vw;
+    position: relative;
+    margin-top: $spacing-v-md;
+  }
+  &-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: $spacing-v-md;
+    &__inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding: 0 5%;
+    }
+  }
+}
+.qz-league-manager-matches__tabs {
+  background-color: $color-bg;
+
+  .at-tabs__header {
+    position: absolute;
+    bottom: 0;
+    height: 75px;
+    z-index: $zindex-tab;
+    //box-shadow: 0 -1px 1px -1px rgba(0, 0, 0, 0.3);
+    border-top: 0.5px solid rgba(0, 0, 0, 0.3);
+
+    .at-tabs__item {
+      .at-tabs__item-underline {
+        top: 0 !important;
+      }
+    }
+  }
+
+  .at-tabs__body {
+    .at-tabs-pane--active {
+      scroll-view {
+        //height: calc(100vh - 70px - 64px - 85px - 90px);
+        overflow-x: hidden;
+        overflow-y: scroll;
+        background-color: $color-bg;
+      }
+    }
+  }
+}

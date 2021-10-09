@@ -1,0 +1,539 @@
+@import '../../../../app.scss';
+
+.qz-match-up-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: $color-bg;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 5%;
+  }
+}
+
+.qz-match-up-item-small {
+  width: 85vw !important;
+}
+
+.qz-match-up-item-no-margin {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.qz-match-up-item-margin {
+  margin: 1vw 0 0 0 !important;
+  border-radius: 0 !important;
+}
+
+.qz-match-up-item {
+  //margin: 2vw 0;
+  width: 90vw;
+  //height: 192px;
+  background-color: #fff;
+  //border-radius: 10px;
+  //box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  padding: $spacing-v-md/2 0;
+
+  &-content {
+    height: 192px;
+    width: 100%;
+    display: flex;
+  }
+
+  &__team {
+    vertical-align: middle;
+    display: inline-block;
+    height: 192px;
+    //width: 30 / 100 * 90vw;
+    width: 30%;
+    overflow: hidden;
+    margin-top: $spacing-v-md/2;
+
+    &-avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-name {
+      display: flex !important;
+      margin-top: $spacing-v-xs;
+      font-size: $font-size-sm;
+      color: $color-text-base;
+      line-height: $line-height-en;
+      width: 100%;
+      height: $font-size-sm * 2 * $line-height-en !important;
+      text-align: center;
+      display: -webkit-box;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      word-break: break-all;
+      white-space: normal !important;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  &-against {
+    &__teams {
+      width: 70%;
+      overflow-y: scroll;
+    }
+
+    &__score {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      font-size: $font-size-sm;
+      color: $color-text-title;
+      line-height: 1.1;
+      letter-spacing: $spacing-v-xs;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-50%);
+    }
+
+    &__team-against-current {
+      display: inline-block;
+      font-size: $font-size-xs;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      .status-icon {
+        border-radius: 50%;
+        width: $font-size-xs * 1.6;
+        height: $font-size-xs * 1.6;
+        margin-left: $font-size-xs * 0.1;
+        background: #fff;
+        position: relative;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+
+        .icon {
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 8px 0 8px 16px;
+          border-color: #fff #fff #fff transparent;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin: -8px 0 0 -6px;
+          background-color: $color-bg-orange-main;
+        }
+      }
+    }
+
+    &__team-against {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border-style: solid;
+      border-width: 0 0 1px 0;
+      border-color: $color-bg-grey-dark;
+    }
+
+    &__team-against-highlight {
+      background-color: $color-bg-orange-main;
+    }
+
+    &__team-against:last-child {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border: none;
+    }
+
+    &__team {
+      vertical-align: middle;
+      display: inline-block;
+      width: 50%;
+      overflow: hidden;
+      margin-top: $spacing-v-md/2;
+
+      &-avatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        image {
+          border-radius: 50%;
+          background-clip: border-box;
+          overflow: hidden;
+          width: 40px;
+          height: 40px;
+          line-height: 40px;
+        }
+      }
+
+      &-name {
+        display: flex !important;
+        font-size: $font-size-xs;
+        color: $color-text-base;
+        line-height: $line-height-base;
+        width: 100%;
+        height: $font-size-xs * 2 * $line-height-base !important;
+        text-align: center;
+        display: -webkit-box;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: normal !important;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+
+  &__vs-against {
+    width: 30%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 $spacing-v-sm;
+
+    &-divider {
+      height: 80%;
+      background-color: $color-bg-grey-dark;
+      width: 2px;
+      margin: 0 $spacing-v-sm;
+    }
+
+    &-content {
+      width: 100%;
+      overflow: hidden;
+      text-align: center;
+      position: relative;
+    }
+
+    &-league-img {
+      border-radius: 50%;
+      background-clip: border-box;
+      overflow: hidden;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+    }
+
+    &-league-name {
+      font-size: $font-size-xs;
+      line-height: $line-height-base;
+      color: $color-text-paragraph;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+    }
+
+    &-match-time {
+      font-size: $font-size-xs;
+      color: $color-text-placeholder;
+      width: 100%;
+      line-height: $line-height-base;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      //position: absolute;
+      //bottom: $spacing-v-xs;
+    }
+
+    &-match-round {
+      font-size: $font-size-xs;
+      color: $color-text-paragraph;
+      width: 100%;
+      line-height: $line-height-base;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin: $spacing-h-sm 0;
+    }
+
+    &-match-status {
+      display: flex;
+      justify-content: center;
+      margin: $spacing-h-sm 0;
+
+      .status-box {
+        display: inline-block;
+        font-size: $font-size-xs;
+
+        .live {
+          background-color: #63af2b;
+        }
+
+        .finish {
+          background-color: #7ab8f4;
+        }
+
+        .unopen {
+          background-color: #e27c77;
+        }
+
+        .background {
+          padding: $font-size-xs * 0.2;
+          height: $font-size-xs * 2;
+          border-radius: $font-size-xs;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+        }
+
+        .none {
+          display: none;
+        }
+
+        .text {
+          color: $color-text-base-inverse;
+          margin-left: $spacing-h-sm;
+        }
+
+        .text-disabled {
+          color: $color-text-disabled;
+          margin-left: 0;
+        }
+
+        .status-icon {
+          border-radius: 50%;
+          width: $font-size-xs * 1.6;
+          height: $font-size-xs * 1.6;
+          margin-left: $font-size-xs * 0.1;
+          background: #fff;
+          position: relative;
+
+          .icon {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 0 8px 16px;
+            border-color: #fff #fff #fff transparent;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -7px 0 0 -5px;
+          }
+        }
+      }
+    }
+  }
+
+  &__vs {
+    margin-top: -1 * $spacing-v-sm;
+    vertical-align: middle;
+    //display: inline-block;
+    //width: 40 / 100 * 90vw;
+    width: 40%;
+    height: 192px;
+    //overflow: hidden;
+    //text-overflow: ellipsis;
+    //white-space: nowrap;
+    //text-align: center;
+    //position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    &-content {
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
+      position: relative;
+    }
+
+    &-league-name {
+      font-size: $font-size-xs;
+      line-height: $line-height-base;
+      color: $color-text-paragraph;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      text-align: center;
+    }
+
+    &-match-time {
+      font-size: $font-size-xs;
+      color: $color-grey-2;
+      width: 100%;
+      line-height: $line-height-en;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin-top: $spacing-v-xs/2;
+      //position: absolute;
+      //bottom: $spacing-v-xs;
+      &-status {
+        margin-left: $spacing-h-sm;
+      }
+    }
+
+    &-match-place {
+      font-size: $font-size-xs;
+      color: $color-grey-2;
+      width: 100%;
+      line-height: $line-height-en;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin-top: $spacing-v-xs/2;
+      margin-left: -$font-size-sm/2;
+
+      .icon {
+
+      }
+
+      .text {
+
+      }
+    }
+
+    &-match-monopoly__container {
+      .title {
+        font-size: $font-size-xs;
+        color: $color-error;
+        width: 100%;
+        line-height: $line-height-en;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-top: $spacing-v-xs;
+      }
+    }
+
+    &-match-monopoly {
+      color: #fff;
+      font-size: $font-size-base;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      background-color: rgba(0, 0, 0, 0.15);
+      border-radius: calc(0.5 * (1.5 * 24px + 2 * 4px));
+      padding: 4px $spacing-h-sm;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      word-break: break-all;
+      max-width: fit-content;
+      //max-width: 100%;
+      margin: auto;
+
+      .avatar {
+        display: inline-block;
+        height: $font-size-base * 1.5;
+        min-height: $font-size-base * 1.5;
+        width: $font-size-base * 1.5;
+        min-width: $font-size-base * 1.5;
+        border-radius: 50%;
+      }
+
+      .text {
+        display: inline-block;
+        font-size: $font-size-sm;
+        line-height: $line-height-en;
+        white-space: nowrap;
+        margin-left: $spacing-v-xs;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+
+      .text-small {
+        display: inline-block;
+        font-size: $font-size-xxs;
+        line-height: $line-height-en;
+        white-space: nowrap;
+        margin-left: $spacing-v-xs;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+    }
+
+    &-match-round {
+      font-size: $font-size-xs;
+      color: $color-grey-2;
+      width: 100%;
+      line-height: $line-height-en;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    &-match-name {
+      font-size: $font-size-base;
+      color: $color-text-title;
+      width: 100%;
+      line-height: $line-height-zh;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    &-match-score {
+      font-size: $font-size-xxxl;
+      color: $color-text-title;
+      width: 100%;
+      line-height: 1.1;
+      letter-spacing: $spacing-v-lg;
+      text-indent: $spacing-v-lg;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    &-match-score-small {
+      font-size: $font-size-lg !important;
+      letter-spacing: $spacing-v-md;
+      text-indent: $spacing-v-md;
+    }
+
+    &-match-score-penalty {
+      font-size: $font-size-xs;
+      color: $color-grey-2;
+      width: 100%;
+      letter-spacing: $spacing-v-md;
+      text-indent: $spacing-v-md;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__vs-full {
+    width: 100% !important;
+    margin-top: 0 !important;
+
+    .qz-match-up-item__vs-match-name {
+      display: inline !important;
+    }
+  }
+}

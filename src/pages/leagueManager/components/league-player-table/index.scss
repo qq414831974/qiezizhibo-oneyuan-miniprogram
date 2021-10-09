@@ -1,0 +1,86 @@
+@import '../../../../app.scss';
+
+.qz-league-player-table__result {
+  &-loading {
+    width: 100vw;
+    height: 10vw;
+    position: relative;
+    margin-top: $spacing-v-md;
+  }
+
+  .at-tabs__header {
+    background-color: $color-bg-grey;
+  }
+
+  .at-tabs__item {
+    color: #999;
+    min-width: 120px;
+  }
+
+  .at-tabs__body {
+    max-width: calc(100vw - 120px - 48px);
+  }
+
+  .at-tabs__item--active {
+    color: $color-bg-orange-main;
+    background-color: $color-white;
+
+    .at-tabs__item-underline {
+      background-color: $color-bg-orange-main;
+    }
+  }
+
+  &-header {
+    background-color: $color-bg-grey;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+    padding: 0 12px;
+
+    .title {
+      width: 12vw;
+      text-align: center;
+      font-size: $font-size-base;
+      height: 60px;
+      line-height: 60px;
+      padding: $spacing-h-sm 0;
+      color: #999;
+      //font-weight: 600;
+    }
+
+    .highlight {
+      color: $color-bg-orange-main;
+    }
+
+    view:first-child {
+      float: left;
+    }
+
+    view:last-child {
+      float: right;
+    }
+  }
+
+  &-header:after {
+    content: "";
+    display: table;
+    clear: both;
+    overflow: hidden;
+  }
+}
+
+.qz-league-player-table__number {
+  display: flex;
+  align-items: center;
+
+  text {
+    width: 12vw;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  text:first-child {
+  }
+
+  text:last-child {
+    color: $color-bg-orange-main;
+  }
+}

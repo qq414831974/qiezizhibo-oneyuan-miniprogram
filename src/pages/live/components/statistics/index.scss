@@ -1,0 +1,416 @@
+@import '../../../../app';
+
+.qz-statistics {
+  width: 100%;
+  padding-top: 30px;
+  background-color: $color-bg-grey-dark;
+}
+
+.qz-statistics-item-against {
+  padding: 0 5vw;
+  margin-top: $spacing-v-xl;
+  font-size: $font-size-lg;
+  color: $color-text-title;
+}
+
+.qz-statistics-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: $spacing-v-xl;
+}
+
+.qz-statistics-item-container {
+  background-color: $color-white;
+  padding-top: 20px;
+  margin-top: 30px;
+}
+
+.qz-statistics-item {
+  padding: 0 5vw;
+  width: 90vw;
+  margin-top: $spacing-v-xl;
+
+  &-text {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    &-title {
+      font-size: $font-size-base;
+      color: $color-text-paragraph;
+    }
+
+    &-host {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      font-size: $font-size-sm;
+      color: $color-grey-2;
+    }
+
+    &-guest {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      font-size: $font-size-sm;
+      color: $color-grey-2;
+    }
+  }
+
+  &-stat {
+    width: 100%;
+  }
+}
+
+.qz-statistics-selector-text {
+  background-color: $color-white;
+  padding: 10px 50px 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  position: relative;
+
+  &-chevron {
+    color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.qz-statistics-table {
+  background-color: $color-bg-grey-dark;
+
+  &__title {
+    padding: 10px 30px;
+
+    text {
+      color: $color-grey-1;
+      font-size: $font-size-sm;
+    }
+  }
+
+  &__layout {
+    background-color: $color-white;
+  }
+
+  .max-content {
+    width: max-content;
+  }
+
+  &__header {
+    padding: $spacing-v-sm 0;
+    position: relative;
+    box-sizing: border-box;
+    color: $at-list-content-color;
+    font-size: $font-size-sm;
+    line-height: $line-height-zh;
+    @include hairline-bottom-relative($left: $spacing-h-sm, $width: 2px);
+
+    &-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      -webkit-box-align: center;
+
+      .qz-statistics-table__header-title {
+        width: 70px;
+        text-align: center;
+        margin: 0 auto;
+      }
+    }
+
+    .overview {
+      padding-left: 120px;
+    }
+
+    .player-statistics {
+      .player-left {
+        width: 180px;
+        min-width: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex: 0 1 auto;
+        position: sticky;
+        left: 0;
+        background-color: $color-white;
+        color: $color-white;
+      }
+
+      .player-right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex: 1 1;
+
+        view {
+          width: 125px;
+          min-width: 125px;
+          text-align: center;
+          margin: 0 auto;
+          background-color: $color-white;
+        }
+
+        view:first-child {
+          position: sticky;
+          left: 180px;
+        }
+      }
+    }
+  }
+
+  &__content {
+  }
+
+  &__item {
+    padding: $spacing-v-sm 0;
+    position: relative;
+    box-sizing: border-box;
+    color: $at-list-text-color;
+    font-size: $font-size-lg;
+    line-height: $line-height-zh;
+
+    &-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      -webkit-box-align: center;
+    }
+
+    .best {
+      padding: 0 30px;
+
+      .player-left {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex: 1 1;
+        overflow: hidden;
+        background-color: $color-white;
+      }
+
+      .player-right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 1 1;
+        overflow: hidden;
+      }
+
+      .score-center {
+        flex: 0 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .text {
+          font-size: $font-size-base;
+          line-height: $line-height-zh;
+          color: $at-list-content-color;
+          margin: 0 20px;
+        }
+
+        .score {
+          font-size: $font-size-base;
+          line-height: $line-height-zh;
+          color: $at-list-content-color;
+        }
+
+        .score-highlight {
+          color: $color-highlight;
+        }
+      }
+
+      .qz-statistics-table__item-avatar {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        image {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+        }
+      }
+
+      .qz-statistics-table__item-name {
+        text-align: center;
+        margin: 0 15px;
+        font-size: $font-size-base;
+        line-height: $line-height-zh;
+        color: $at-list-text-color;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+    }
+
+    .overview {
+      .qz-statistics-table__item-avatar {
+        width: 120px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        image {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+        }
+      }
+
+      .qz-statistics-table__item-text {
+        width: 70px;
+        text-align: center;
+        margin: 0 auto;
+        font-size: $font-size-base;
+        line-height: $line-height-zh;
+        color: $at-list-text-color;
+      }
+    }
+
+    .player-statistics {
+      .player-left {
+        width: 180px;
+        min-width: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex: 0 1 auto;
+        position: sticky;
+        left: 0;
+        background-color: $color-white;
+      }
+
+      .player-right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex: 1 1;
+      }
+
+      .qz-statistics-table__item-shirtNum {
+        width: 50px;
+        text-align: center;
+        font-size: $font-size-base;
+        line-height: $line-height-zh;
+        color: $at-list-text-color;
+        flex: 0 1 auto;
+      }
+
+      .qz-statistics-table__item-player-name {
+        width: 70px;
+        text-align: left;
+        font-size: $font-size-sm;
+        line-height: $line-height-zh;
+        color: $at-list-text-color;
+        flex: 1 1;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .qz-statistics-table__item-point {
+        width: 125px;
+        min-width: 125px;
+        text-align: center;
+        margin: 0 auto;
+        font-size: $font-size-base;
+        line-height: $line-height-zh;
+        color: $at-list-text-color;
+        background-color: $color-white;
+      }
+
+      .qz-statistics-table__item-point:first-child {
+        position: sticky;
+        left: 180px;
+      }
+    }
+  }
+
+  &__item:first-child {
+    .qz-statistics-table__item-shirtNum {
+      color: $color-highlight;
+    }
+
+    .qz-statistics-table__item-player-name {
+      color: $color-highlight;
+    }
+
+    .qz-statistics-table__item-point {
+      color: $color-highlight;
+    }
+  }
+
+  &__footer {
+    padding: $spacing-v-sm 0;
+    position: relative;
+    box-sizing: border-box;
+    color: $at-list-text-color;
+    font-size: $font-size-lg;
+    line-height: $line-height-zh;
+    @include hairline-top-relative($left: $spacing-h-sm, $width: 2px);
+    width: max-content;
+
+    &-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      -webkit-box-align: center;
+    }
+
+    .player-left {
+      width: 180px;
+      min-width: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 0 1 auto;
+      position: sticky;
+      left: 0;
+      background-color: $color-white;
+
+      text {
+        width: 100%;
+        text-align: center;
+        font-size: $font-size-base;
+        line-height: $line-height-zh;
+        color: $at-list-content-color;
+      }
+    }
+
+    .player-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 1 1;
+      background-color: $color-white;
+
+      text {
+        width: 125px;
+        min-width: 125px;
+        text-align: center;
+        margin: 0 auto;
+        font-size: $font-size-base;
+        line-height: $line-height-zh;
+        color: $at-list-content-color;
+        background-color: $color-white;
+      }
+
+      text:first-child {
+        position: sticky;
+        left: 180px;
+      }
+    }
+  }
+}
