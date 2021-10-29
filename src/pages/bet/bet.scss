@@ -13,7 +13,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  background: $color-bg-orange-main;
+  background: $color-bg-green-main;
 
   &__team {
     vertical-align: middle;
@@ -191,7 +191,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    //background: $color-bg-orange-main;
+    //background: $color-bg-green-main;
     background-color: $color-bg-grey;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
     padding: $spacing-v-sm 0;
@@ -244,7 +244,7 @@
       &-view-hover {
         font-size: $font-size-base;
         color: $color-text-base-inverse;
-        background-color: $color-bg-orange-main;
+        background-color: $color-bg-green-main;
         text-align: center;
         padding: 10px 0;
         margin-bottom: 10px;

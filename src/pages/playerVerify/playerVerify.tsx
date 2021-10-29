@@ -132,7 +132,7 @@ class PersonVerify extends Component<IProps, PageState> {
         this.setState({currentPlayer: currentPlayer, loading: false})
         this.initCashOverView(null, userNo);
       } else {
-        this.setState({loading: false, hint: "您还未绑定球员，请到球星夸夸榜中选择球员进行验证。", hintOpen: true})
+        this.setState({loading: false, hint: "您还未绑定球员，请到人气PK中选择球员进行验证。", hintOpen: true})
       }
     })
   }
@@ -332,7 +332,7 @@ class PersonVerify extends Component<IProps, PageState> {
   }
   onCashClick = (data) => {
     if (!data.isSettled && !data.preCashAvailable) {
-      Taro.showToast({title: "请在球星夸夸榜结束结算后再操作", icon: "none"})
+      Taro.showToast({title: "请在人气PK结束结算后再操作", icon: "none"})
       return;
     }
     if ((data.isSettled && data.cashRemain <= 0) || (data.preCashAvailable && data.preCashRemain <= 0)) {

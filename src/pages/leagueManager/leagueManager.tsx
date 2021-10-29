@@ -5,6 +5,7 @@ import {AtActivityIndicator, AtTabs, AtTabsPane, AtFab, AtToast} from "taro-ui"
 import {connect} from 'react-redux'
 import defaultLogo from '../../assets/default-logo.png'
 import cancel from '../../assets/cancel.png'
+import close from '../../assets/close.png'
 
 import './leagueManager.scss'
 import leagueAction from "../../actions/league";
@@ -126,6 +127,8 @@ type PageState = {
   agreementOpen: boolean,
   cashAgreementOpen: boolean,
   currentToCashPlayer: any,
+  giftRankFabShow: boolean,
+  heatRewardFabShow: boolean,
 }
 
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps
@@ -209,6 +212,8 @@ class LeagueManager extends Component<IProps, PageState> {
       agreementOpen: false,
       cashAgreementOpen: false,
       currentToCashPlayer: null,
+      giftRankFabShow: true,
+      heatRewardFabShow: true,
     }
   }
 
@@ -990,7 +995,7 @@ class LeagueManager extends Component<IProps, PageState> {
     if (this.state.heatType == global.HEAT_TYPE.LEAGUE_PLAYER_HEAT) {
       let leaguePlayerHeatTitle = '人气PK'
       if (this.state.heatRule && this.state.heatRule.cashAvailable) {
-        leaguePlayerHeatTitle = '球星夸夸榜'
+        leaguePlayerHeatTitle = '人气PK'
       }
       tabList.push({title: leaguePlayerHeatTitle})
       tabs[global.LEAGUE_TABS_TYPE.heatPlayer] = tabIndex;
@@ -1189,7 +1194,7 @@ class LeagueManager extends Component<IProps, PageState> {
     return (
       <View className='qz-league-manager-content'>
         <NavBar
-          title='一元体育'
+          title='1元体育'
           back
           ref={ref => {
             this.navRef = ref;
@@ -1377,17 +1382,25 @@ class LeagueManager extends Component<IProps, PageState> {
         />
         {this.state.currentTab == tabs[global.LEAGUE_TABS_TYPE.heatPlayer] || this.state.currentTab == tabs[global.LEAGUE_TABS_TYPE.heatTeam] ?
           <View>
-            <View className="qz-league-manager-fab qz-league-manager-fab-square qz-league-manager-fab-giftrank">
+            <View
+              className={`qz-league-manager-fab qz-league-manager-fab-square qz-league-manager-fab-giftrank ${this.state.giftRankFabShow ? "" : "none"}`}>
               <AtFab onClick={this.onGiftRankClick}>
                 <Image className="qz-league-manager-fab-image"
                        src={gift_rank}/>
               </AtFab>
+              <Image className="qz-league-manager-fab-close" src={close} onClick={() => {
+                this.setState({giftRankFabShow: false})
+              }}/>
             </View>
-            <View className="qz-league-manager-fab qz-league-manager-fab-square qz-league-manager-fab-heatreward">
+            <View
+              className={`qz-league-manager-fab qz-league-manager-fab-square qz-league-manager-fab-heatreward ${this.state.heatRewardFabShow ? "" : "none"}`}>
               <AtFab onClick={this.onHeatRewardClick.bind(this, false)}>
                 <Image className="qz-league-manager-fab-image"
                        src={this.state.heatRule && this.state.heatRule.cashAvailable ? cash_rule : heat_reward}/>
               </AtFab>
+              <Image className="qz-league-manager-fab-close" src={close} onClick={() => {
+                this.setState({heatRewardFabShow: false})
+              }}/>
             </View>
           </View>
           : null

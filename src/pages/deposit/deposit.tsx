@@ -206,7 +206,7 @@ class Deposit extends Component<IProps, PageState> {
       openId: openId,
       userNo: userNo,
       type: global.ORDER_TYPE.deposit,
-      description: `一元体育-绝杀币-` + price * 100,
+      description: `1元体育-1元币-` + price * 100,
       attach: JSON.stringify({
         price: price * 100
       })
@@ -309,7 +309,7 @@ class Deposit extends Component<IProps, PageState> {
             {loading ? "-" : getYuan(deposit)}
           </View>
           <View className='qz-deposit-header__title-hint'>
-            绝杀币
+            1元币
           </View>
           {this.props.payEnabled ?
             <AtButton

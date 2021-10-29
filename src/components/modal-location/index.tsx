@@ -68,7 +68,7 @@ class ModalLocation extends Component<IProps, PageState> {
           </Text>
           <AtDivider height={48} lineColor="#E5E5E5"/>
           <Text className="light-gray qz-location-modal-content_tip">
-            • 一元体育将获得您的位置信息
+            • 1元体育将获得您的位置信息
           </Text>
         </AtModalContent>
         <AtModalAction>

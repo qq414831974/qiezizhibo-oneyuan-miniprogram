@@ -8,6 +8,7 @@ import {AtActivityIndicator} from 'taro-ui'
 import './personVerify.scss'
 import Request from "../../utils/request";
 import * as api from "../../constants/api";
+import {checkIdCard} from "../../utils/utils";
 import IdcardVerifyModal from "./components/modal-idcard-verify";
 
 type PageStateProps = {}
@@ -22,6 +23,7 @@ type PageState = {
   idCardVerifyShow: boolean;
   idCard: string;
   name: string;
+  idCardInput: string;
 }
 
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps
@@ -41,6 +43,7 @@ class PersonVerify extends Component<IProps, PageState> {
       idCardVerifyShow: false,
       idCard: null,
       name: null,
+      idCardInput: null,
     }
   }
 
@@ -55,7 +58,8 @@ class PersonVerify extends Component<IProps, PageState> {
         if (data.idCard != null) {
           this.setState({idCard: data.idCard, name: data.name, idCardVerifyShow: true})
         } else {
-          this.onVerifyIdCardSuccess();
+          // this.onVerifyIdCardSuccess();
+          this.setState({idCard: null, name: data.name, idCardVerifyShow: true})
         }
       } else {
         Taro.showToast({title: "认证失败，请返回重试", icon: "none"});
@@ -79,11 +83,16 @@ class PersonVerify extends Component<IProps, PageState> {
       const playerId = this.getParam("playerId");
       const userNo = this.getParam("userNo");
       this.setState({loading: true})
-      new Request().get(api.API_PERSON_VERIFY_LEAGUEMEMBER, {
+      let param: any = {
         leagueId: leagueId,
         playerId: playerId,
         userNo: userNo
-      }).then((data: any) => {
+      };
+      if (this.state.idCard == null && this.state.idCardInput != null) {
+        param.name = this.state.name;
+        param.idCard = this.state.idCardInput;
+      }
+      new Request().get(api.API_PERSON_VERIFY_LEAGUEMEMBER, param).then((data: any) => {
         if (data != null && typeof data == "string") {
           this.setState({verifyUrl: data, loading: false})
         } else {
@@ -94,17 +103,22 @@ class PersonVerify extends Component<IProps, PageState> {
       const playerId = this.getParam("playerId");
       const userNo = this.getParam("userNo");
       this.setState({loading: true})
-      new Request().get(api.API_PERSON_VERIFY_PLAYER, {
+      let param: any = {
         playerId: playerId,
         userNo: userNo
-      }).then((data: any) => {
+      };
+      if (this.state.idCard == null && this.state.idCardInput != null) {
+        param.name = this.state.name;
+        param.idCard = this.state.idCardInput;
+      }
+      new Request().get(api.API_PERSON_VERIFY_PLAYER, param).then((data: any) => {
         if (data != null && typeof data == "string") {
           this.setState({verifyUrl: data, loading: false})
         } else {
           Taro.showToast({title: "认证失败，请返回重试", icon: "none"});
-  }
+        }
       })
-  }
+    }
   }
   getParam = (name) => {
     const router = getCurrentInstance().router;
@@ -115,12 +129,22 @@ class PersonVerify extends Component<IProps, PageState> {
     }
   }
   onIdCardVerifyConfirm = (idcard) => {
-    if (typeof idcard == "string" && idcard.trim() == this.state.idCard) {
-      this.setState({idCardVerifyShow: false}, () => {
-        this.onVerifyIdCardSuccess();
-      })
+    if (this.state.idCard == null) {
+      if (checkIdCard(idcard)) {
+        this.setState({idCardVerifyShow: false, idCardInput: idcard}, () => {
+          this.onVerifyIdCardSuccess();
+        })
+      } else {
+        Taro.showToast({title: "身份证错误", icon: "none"})
+      }
     } else {
-      Taro.showToast({title: "身份证错误", icon: "none"})
+      if (typeof idcard == "string" && idcard.trim() == this.state.idCard) {
+        this.setState({idCardVerifyShow: false}, () => {
+          this.onVerifyIdCardSuccess();
+        })
+      } else {
+        Taro.showToast({title: "身份证错误", icon: "none"})
+      }
     }
   }
   onIdCardVerifyCancel = () => {

@@ -16,7 +16,7 @@
 
   &-header {
     width: 100%;
-    background-color: $color-bg-orange-main;
+    background-color: $color-bg-green-main;
     z-index: 800;
 
     &-container {
@@ -131,9 +131,9 @@
 
     .radio-item {
       height: 56px;
-      color: $color-bg-orange-main;
+      color: $color-bg-green-main;
       font-size: $font-size-base;
-      border: 4px solid $color-bg-orange-main;
+      border: 4px solid $color-bg-green-main;
       border-left: none;
       display: flex;
       align-items: center;
@@ -141,11 +141,11 @@
     }
 
     .radio-item:first-of-type {
-      border: 4px solid $color-bg-orange-main;
+      border: 4px solid $color-bg-green-main;
     }
 
     .radio-item__active {
-      background: $color-bg-orange-main;
+      background: $color-bg-green-main;
       color: $color-white;
     }
   }

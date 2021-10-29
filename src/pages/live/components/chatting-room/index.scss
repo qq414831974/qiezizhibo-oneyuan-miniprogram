@@ -20,7 +20,6 @@
     width: 100vw;
 
     &__container {
-      position: relative;
       //min-height: calc(100vh - (9 / 16 * 100vw) - 48px - 1.45 * 28px - 208px - 88px - 48px - 110px); //减去tab的高度
       width: 94vw;
       padding: 3vw;
@@ -51,7 +50,7 @@
         height: 0;
         border-width: 20px;
         border-style: solid;
-        border-color: $color-bg-orange-main transparent transparent transparent;
+        border-color: $color-bg-green-main transparent transparent transparent;
         position: absolute;
         left: calc(90px + 3vw);
       }
@@ -68,7 +67,7 @@
         height: 0;
         border-width: 20px;
         border-style: solid;
-        border-color: $color-bg-orange-main transparent transparent transparent;
+        border-color: $color-bg-green-main transparent transparent transparent;
         position: absolute;
         right: calc(90px + 3vw);
       }
@@ -114,6 +113,7 @@
         font-weight: normal;
         transform: translateY(-100%);
       }
+
       image {
         width: 60px;
         height: 60px;
@@ -156,7 +156,7 @@
 
   &__chat-text {
     &__text {
-      background-color: $color-bg-orange-main;
+      background-color: $color-bg-green-main;
       border-radius: 15px;
       padding: 15px;
       word-wrap: break-word;
@@ -187,11 +187,25 @@
     padding: $spacing-h-sm;
     //margin: 0 $spacing-h-sm;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
 
-    &-button {
+    &--input {
+      flex: 0 1 auto;
       width: 100%;
-      height: 100%;
-      color: $color-bg-orange-main;
+      background-color: $color-white;
+      margin-right: $spacing-h-sm;
+      height: 52px;
+      line-height: 52px;
+      border-radius: 8px;
+      padding: 0 10px;
+    }
+
+    &--button {
+      flex: 1 1;
+      width: 100%;
+      color: $color-bg-green-main;
       font-size: $font-size-base;
       display: flex !important;
       align-items: center;

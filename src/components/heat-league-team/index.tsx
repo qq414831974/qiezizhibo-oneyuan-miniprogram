@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
 import {Component} from 'react'
-import {View, Text, Image, ScrollView} from '@tarojs/components'
+import {View, Text, Image, ScrollView, CustomWrapper} from '@tarojs/components'
 import {AtSearchBar, AtDivider, AtButton, AtActivityIndicator, AtLoadMore} from 'taro-ui'
 
 import './index.scss'
@@ -226,7 +226,7 @@ class HeatLeagueTeam extends Component<IProps, PageState> {
     this.nextPage();
   }
 
-  onPullDownRefresh=()=> {
+  onPullDownRefresh = () => {
     this.setState({pulldownRefresh: true})
     Taro.showLoading({title: global.LOADING_TEXT})
     this.refresh();
@@ -250,7 +250,7 @@ class HeatLeagueTeam extends Component<IProps, PageState> {
   handleShare = () => {
 
   }
-  handleShareMoment = (teamHeat,e) => {
+  handleShareMoment = (teamHeat, e) => {
     e.stopPropagation();
     e.preventDefault();
     let currentTeamHeat = this.state.currentTeamHeat;
@@ -356,14 +356,16 @@ class HeatLeagueTeam extends Component<IProps, PageState> {
               {/*</View>*/}
               {/*<View className="at-col at-col-4">*/}
               <View className="at-col at-col-12">
-                <View className="w-full center qz-heat-team-header__status-title">
-                  活动结束倒计时
-                </View>
-                <View className="w-full center qz-heat-team-header__status-value">
-                  {heatStatus == STATUS.unopen ? `${startDiffDayTime ? `${startDiffDayTime.diffTime ? startDiffDayTime.diffDay + startDiffDayTime.diffTime : ""}` : ""}后开始PK` : ""}
-                  {heatStatus == STATUS.open ? `PK中 ${endDiffDayTime ? `${endDiffDayTime.diffTime ? endDiffDayTime.diffDay + endDiffDayTime.diffTime : ""}` : ""}` : ""}
-                  {heatStatus == STATUS.finish ? `PK已结束` : ""}
-                </View>
+                <CustomWrapper>
+                  <View className="w-full center qz-heat-team-header__status-title">
+                    活动结束倒计时
+                  </View>
+                  <View className="w-full center qz-heat-team-header__status-value">
+                    {heatStatus == STATUS.unopen ? `${startDiffDayTime ? `${startDiffDayTime.diffTime ? startDiffDayTime.diffDay + startDiffDayTime.diffTime : ""}` : ""}后开始PK` : ""}
+                    {heatStatus == STATUS.open ? `PK中 ${endDiffDayTime ? `${endDiffDayTime.diffTime ? endDiffDayTime.diffDay + endDiffDayTime.diffTime : ""}` : ""}` : ""}
+                    {heatStatus == STATUS.finish ? `PK已结束` : ""}
+                  </View>
+                </CustomWrapper>
               </View>
             </View>
           </View>

@@ -11,15 +11,15 @@
     position: fixed;
     //top: 0;
     z-index: $zindex-drawer;
-    background-color: $color-bg-orange-main;
+    background-color: $color-bg-green-main;
     &-bar {
-      background-color: $color-bg-orange-main;
+      background-color: $color-bg-green-main;
 
       .at-search-bar {
-        background-color: $color-bg-orange-main;
+        background-color: $color-bg-green-main;
 
         &__action {
-          background-color: $color-bg-orange-main;
+          background-color: $color-bg-green-main;
         }
       }
     }

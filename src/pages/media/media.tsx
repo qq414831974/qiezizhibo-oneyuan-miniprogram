@@ -95,7 +95,7 @@ class Media extends Component<IProps, PageState> {
     return (
       <View className='qz-media-container'>
         <NavBar
-          title='一元体育'
+          title='1元体育'
           back
           ref={ref => {
             this.navRef = ref;

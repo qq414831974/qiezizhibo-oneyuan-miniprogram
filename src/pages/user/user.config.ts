@@ -1,6 +1,6 @@
 export default {
   navigationBarTitleText: '',
-  navigationBarBackgroundColor: '#ff9900',
+  navigationBarBackgroundColor: '#3bb36b',
   navigationBarTextStyle: 'white',
   navigationStyle: 'custom',
   enablePullDownRefresh: true

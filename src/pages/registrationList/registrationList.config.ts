@@ -1,6 +1,6 @@
 export default {
   navigationBarTitleText: '联赛报名',
-  navigationBarBackgroundColor: '#ff9900',
+  navigationBarBackgroundColor: '#3bb36b',
   navigationBarTextStyle: 'white',
   navigationStyle: 'custom',
   disableScroll: true,

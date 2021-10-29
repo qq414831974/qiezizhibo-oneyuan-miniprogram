@@ -1,6 +1,6 @@
 import Taro, {getCurrentInstance} from '@tarojs/taro'
 import {Component} from 'react'
-import {Image, ScrollView, Text, Video, View} from '@tarojs/components'
+import {Image, ScrollView, Text, Video, View, CustomWrapper} from '@tarojs/components'
 import {
   AtButton,
   AtCurtain,
@@ -84,6 +84,7 @@ import {crown, cash_rule, disclaimer, gift_rank, heat_reward} from "../../utils/
 // import withOfficalAccount from "../../utils/withOfficialAccount";
 import ModalAgreement from "../../components/modal-agreement";
 import CashAgreementModal from "../../components/modal-cash-agreement";
+import close from "../../assets/close.png";
 
 type Bulletin = {
   id: number,
@@ -210,6 +211,8 @@ type PageState = {
   cashAgreementOpen: boolean,
   currentToCashPlayer: any,
   statisticsMode: boolean,
+  giftRankFabShow: boolean,
+  heatRewardFabShow: boolean,
 }
 
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps
@@ -335,6 +338,8 @@ class Live extends Component<IProps, PageState> {
       cashAgreementOpen: false,
       currentToCashPlayer: null,
       statisticsMode: false,
+      giftRankFabShow: true,
+      heatRewardFabShow: true,
     }
   }
 
@@ -441,7 +446,7 @@ class Live extends Component<IProps, PageState> {
         this.getCollection(data.id);
         this.initSocket(data.id);
         if (!statisticsMode) {
-        this.getUserChargeInfo(data, true);
+          this.getUserChargeInfo(data, true);
         }
         this.getSharePicture(data);
         this.enterTime = formatTimeSecond(new Date());
@@ -451,18 +456,18 @@ class Live extends Component<IProps, PageState> {
         }
         this.initHeatCompetition(data);
         this.getMatchMediaClip(data.id);
-        // if (data.leagueId) {
+        // if (data.leagueId) {qz-live-match__video-controllers
         //   this.initAd(data.leagueId)
         // }
       }
       Taro.hideLoading();
     })
     this.videoContext = Taro.createVideoContext("videoPlayer");
-    Taro.getSystemInfo().then(data => {
-      if (data.platform == 'android') {
-        this.setState({danmuUnable: true})
-      }
-    })
+    // Taro.getSystemInfo().then(data => {
+    //   if (data.platform == 'android') {
+    //     this.setState({danmuUnable: true})
+    //   }
+    // })
   }
 
   componentWillUnmount() {
@@ -1937,7 +1942,7 @@ class Live extends Component<IProps, PageState> {
     } else if (this.state.heatType == HEAT_TYPE.LEAGUE_PLAYER_HEAT) {
       let leaguePlayerHeatTitle = '人气PK'
       if (this.state.heatRule && this.state.heatRule.cashAvailable) {
-        leaguePlayerHeatTitle = '球星夸夸榜'
+        leaguePlayerHeatTitle = '人气PK'
       }
       tabList.push({title: leaguePlayerHeatTitle})
       tabs[TABS_TYPE.heatPlayer] = tabIndex;
@@ -2352,7 +2357,7 @@ class Live extends Component<IProps, PageState> {
     return (
       <View className='qz-live-content'>
         <NavBar
-          title='一元体育'
+          title='1元体育'
           back
           ref={ref => {
             this.navRef = ref;
@@ -2389,86 +2394,86 @@ class Live extends Component<IProps, PageState> {
                 // enableDanmu
                 // danmuList={danmuList}
                 onTimeUpdate={this.handleVideoTime}
-                // autoplay
               >
-                {liveStatus != LiveStatus.FINISH && liveStatus != LiveStatus.ENABLED ?
-                  <View className="qz-live-match__video-poster">
-                    <Image src={match.poster} className="qz-live-match__video-poster-img"/>
-                    {liveStatus == LiveStatus.UNOPEN ?
-                      <View className="qz-live-match__video-poster-inner">
-                        {match.isBetEnable ?
-                          <View className="qz-live-match__video-poster-bet" onClick={this.onBetClick}>
-                            比分竞猜
-                          </View>
-                          : null}
-                        <View className="qz-live-match__video-poster-time" onClick={this.onSubscribeClick}>
-                          <View className='qz-live-match__video-poster-time__title'>
-                            <View>距比赛开始还有{diffDayTime.diffDay}</View>
-                          </View>
-                          <View className='qz-live-match__video-poster-time__time'>
-                            <View>{diffDayTime.diffTime}</View>
-                          </View>
-                          <View className='qz-live-match__video-poster-time__hint'>
-                            <View><View className='at-icon at-icon-bell'/>提醒我开始</View>
-                          </View>
-                        </View>
-                      </View>
-                      :
-                      <View className="qz-live-match__video-poster-text">
-                        <View className='qz-live-match__video-poster-text__text'>
-                          {liveStatus == LiveStatus.ONTIME ? <View>比赛还未开始请耐心等待...</View> : null}
-                          {liveStatus == LiveStatus.NOTPUSH ? <View>信号中断...</View> : null}
-                          {liveStatus == LiveStatus.LOADING ? <View>载入中...</View> : null}
-                        </View>
-                      </View>
-                    }
-                  </View>
-                  : <View
-                    className={`qz-live-match__video-controllers ${this.state.danmuUnable != true ? "qz-live-match__video-controllers-full" : ""}`}>
-                    {this.state.danmuUnable != true && this.state.danmuCurrent.map(item => (
-                      <View
-                        key={`danmu-${item.id}`}
-                        className="qz-live-match__video-controllers__danmu-container"
-                        style={{top: `${21 * (item.row + 1) + item.row * 8}px`}}>
-                        <View className="qz-live-match__video-controllers__danmu">
-                          <View className="qz-live-match__video-controllers__danmu-inner">
-                            <View className="qz-live-match__video-controllers__danmu-inner-container">
-                              <Image src={item.user && item.user.avatar ? item.user.avatar : defaultLogo}/>
-                              <Text>{item.text}</Text>
+                <CustomWrapper>
+                  {liveStatus != LiveStatus.FINISH && liveStatus != LiveStatus.ENABLED ?
+                    <View className="qz-live-match__video-poster">
+                      <Image src={match.poster} className="qz-live-match__video-poster-img"/>
+                      {liveStatus == LiveStatus.UNOPEN ?
+                        <View className="qz-live-match__video-poster-inner">
+                          {match.isBetEnable ?
+                            <View className="qz-live-match__video-poster-bet" onClick={this.onBetClick}>
+                              比分竞猜
+                            </View>
+                            : null}
+                          <View className="qz-live-match__video-poster-time" onClick={this.onSubscribeClick}>
+                            <View className='qz-live-match__video-poster-time__title'>
+                              <View>距比赛开始还有{diffDayTime.diffDay}</View>
+                            </View>
+                            <View className='qz-live-match__video-poster-time__time'>
+                              <View>{diffDayTime.diffTime}</View>
+                            </View>
+                            <View className='qz-live-match__video-poster-time__hint'>
+                              <View><View className='at-icon at-icon-bell'/>提醒我开始</View>
                             </View>
                           </View>
                         </View>
-                      </View>
-                    ))}
-                    <View className="qz-live-match__video-controllers__views">
-                      <Image className="qz-live-match__video-controllers__views-img" src={views_icon}/>
-                      {this.props.match.chargeTimes && ((match.status && match.status.status == FootballEventType.FINISH && match.isRecordCharge) || (match.status && match.status.status != FootballEventType.FINISH && match.isLiveCharge)) ? this.props.match.chargeTimes : (this.props.match.online ? this.props.match.online : "0")}
-                    </View>
-                    <View
-                      className={`qz-live-match__video-controllers__right ${this.state.videoShowMore ? "qz-live-matc1h__video-controllers__right-more" : ""}`}>
-                      <View
-                        className={`qz-live-match__video-controllers__right-arrow ${this.state.videoShowMore ? "qz-live-match__video-controllers__right-arrow-right" : "qz-live-match__video-controllers__right-arrow-left"}`}
-                        onClick={this.handleVideoArrowClick}>
-                        <AtIcon value={this.state.videoShowMore ? "chevron-right" : "chevron-left"}/>
-                      </View>
-                      {this.state.videoShowMore ?
-                        <View className="qz-live-match__video-controllers__right-item-container">
-                          {this.props.mediaList && this.props.mediaList.map((item, index) => (
-                            <View key={item.id}
-                                  className={`qz-live-match__video-controllers__right-item ${this.state.currentMedia == index ? "qz-live-match__video-controllers__right-item-selected" : ""}`}
-                                  onClick={this.handleMediaFragmentClick.bind(this, index)}>
-                              <Text
-                                className="qz-live-match__video-controllers__right-item-text">
-                                {`片段${index + 1}`}
-                              </Text>
-                            </View>
-                          ))}
+                        :
+                        <View className="qz-live-match__video-poster-text">
+                          <View className='qz-live-match__video-poster-text__text'>
+                            {liveStatus == LiveStatus.ONTIME ? <View>比赛还未开始请耐心等待...</View> : null}
+                            {liveStatus == LiveStatus.NOTPUSH ? <View>信号中断...</View> : null}
+                            {liveStatus == LiveStatus.LOADING ? <View>载入中...</View> : null}
+                          </View>
                         </View>
-                        : null
                       }
                     </View>
-                  </View>
-                }
+                    : <View className="qz-live-match__video-controllers qz-live-match__video-controllers-full">
+                      {this.state.danmuUnable != true && this.state.danmuCurrent.map(item => (
+                        <View
+                          key={`danmu-${item.id}`}
+                          className="qz-live-match__video-controllers__danmu-container"
+                          style={{top: `${21 * (item.row + 1) + item.row * 8}px`}}>
+                          <View className="qz-live-match__video-controllers__danmu">
+                            <View className="qz-live-match__video-controllers__danmu-inner">
+                              <View className="qz-live-match__video-controllers__danmu-inner-container">
+                                <Image src={item.user && item.user.avatar ? item.user.avatar : defaultLogo}/>
+                                <Text>{item.text}</Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      ))}
+                      <View className="qz-live-match__video-controllers__views">
+                        <Image className="qz-live-match__video-controllers__views-img" src={views_icon}/>
+                        {this.props.match.chargeTimes && ((match.status && match.status.status == FootballEventType.FINISH && match.isRecordCharge) || (match.status && match.status.status != FootballEventType.FINISH && match.isLiveCharge)) ? this.props.match.chargeTimes : (this.props.match.online ? this.props.match.online : "0")}
+                      </View>
+                      <View
+                        className={`qz-live-match__video-controllers__right ${this.state.videoShowMore ? "qz-live-matc1h__video-controllers__right-more" : ""}`}>
+                        <View
+                          className={`qz-live-match__video-controllers__right-arrow ${this.state.videoShowMore ? "qz-live-match__video-controllers__right-arrow-right" : "qz-live-match__video-controllers__right-arrow-left"}`}
+                          onClick={this.handleVideoArrowClick}>
+                          <AtIcon value={this.state.videoShowMore ? "chevron-right" : "chevron-left"}/>
+                        </View>
+                        {this.state.videoShowMore ?
+                          <View className="qz-live-match__video-controllers__right-item-container">
+                            {this.props.mediaList && this.props.mediaList.map((item, index) => (
+                              <View key={item.id}
+                                    className={`qz-live-match__video-controllers__right-item ${this.state.currentMedia == index ? "qz-live-match__video-controllers__right-item-selected" : ""}`}
+                                    onClick={this.handleMediaFragmentClick.bind(this, index)}>
+                                <Text
+                                  className="qz-live-match__video-controllers__right-item-text">
+                                  {`片段${index + 1}`}
+                                </Text>
+                              </View>
+                            ))}
+                          </View>
+                          : null
+                        }
+                      </View>
+                    </View>
+                  }
+                </CustomWrapper>
               </Video>)}
           <View className='qz-live-tabs'
                 style={{top: `calc(${this.state.statisticsMode ? "0px" : "9 / 16 * 100vw"} + ${this.navRef ? this.navRef.state.configStyle.navHeight : 0}px)`}}>
@@ -2771,17 +2776,25 @@ class Live extends Component<IProps, PageState> {
         }
         {this.state.currentTab == tabs[TABS_TYPE.heatPlayer] || this.state.currentTab == tabs[TABS_TYPE.heatLeagueTeam] || (this.state.heatType == HEAT_TYPE.TEAM_HEAT && this.state.currentTab == tabs[TABS_TYPE.matchUp]) ?
           <View>
-            <View className="qz-live-fab qz-live-fab-square qz-live-fab-giftrank">
+            <View
+              className={`qz-live-fab qz-live-fab-square qz-live-fab-giftrank ${this.state.giftRankFabShow ? "" : "none"}`}>
               <AtFab onClick={this.onGiftRankClick}>
                 <Image className="qz-live-fab-image"
                        src={gift_rank}/>
               </AtFab>
+              <Image className="qz-live-fab-close" src={close} onClick={() => {
+                this.setState({giftRankFabShow: false})
+              }}/>
             </View>
-            <View className="qz-live-fab qz-live-fab-square qz-live-fab-heatreward">
+            <View
+              className={`qz-live-fab qz-live-fab-square qz-live-fab-heatreward ${this.state.heatRewardFabShow ? "" : "none"}`}>
               <AtFab onClick={this.onHeatRewardClick.bind(this, false)}>
                 <Image className="qz-live-fab-image"
                        src={this.state.heatRule && this.state.heatRule.cashAvailable ? cash_rule : heat_reward}/>
               </AtFab>
+              <Image className="qz-live-fab-close" src={close} onClick={() => {
+                this.setState({heatRewardFabShow: false})
+              }}/>
             </View>
           </View>
           : null

@@ -135,7 +135,7 @@ class LeagueMember extends Component<IProps, PageState> {
       openId: openId,
       userNo: userNo,
       type: global.ORDER_TYPE.leagueMember,
-      description: `一元体育-联赛会员-${this.props.league.id}`,
+      description: `1元体育-联赛会员-${this.props.league.id}`,
       attach: JSON.stringify({
         leagueId: this.props.league.id,
       })
@@ -189,7 +189,7 @@ class LeagueMember extends Component<IProps, PageState> {
       openId: openId,
       userNo: userNo,
       type: global.ORDER_TYPE.leagueMember,
-      description: `一元体育-联赛会员-${this.props.league.id}`,
+      description: `1元体育-联赛会员-${this.props.league.id}`,
       attach: JSON.stringify({
         leagueId: this.props.league.id,
       })

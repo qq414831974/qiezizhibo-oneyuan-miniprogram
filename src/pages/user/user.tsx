@@ -63,7 +63,7 @@ interface User {
 
 // @withOfficalAccount()
 @withShare({
-  title: '一元体育',
+  title: '1元体育',
   imageUrl: logo,
   path: 'pages/home/home'
 })
@@ -535,13 +535,13 @@ class User extends Component<IProps, PageState> {
               <View className='title'>{locationConfig ? locationConfig.province : "未定位"}</View>
               <View className='desc'>地区</View>
             </View>
-            {payEnabled ? <View className='line'/> : null}
-            {payEnabled ? <View className='item' onClick={this.onCashClick}>
-              <View className='title_pic'>
-                <Image src={yuan}/>
-              </View>
-              <View className='desc'>钱包</View>
-            </View> : null}
+            {/*{payEnabled ? <View className='line'/> : null}*/}
+            {/*{payEnabled ? <View className='item' onClick={this.onCashClick}>*/}
+            {/*  <View className='title_pic'>*/}
+            {/*    <Image src={yuan}/>*/}
+            {/*  </View>*/}
+            {/*  <View className='desc'>钱包</View>*/}
+            {/*</View> : null}*/}
             <View className='line'/>
             <View className='item' onClick={this.onCollectionClick}>
               <View className='title_number'>{this.state.collectNum}</View>
@@ -565,18 +565,18 @@ class User extends Component<IProps, PageState> {
             </View>
             <AtIcon value='chevron-right' size='18' color='#7f7f7f'/>
           </Button>
-          {payEnabled ? <Button onClick={this.onBetClick} className='list button-list'>
-            <View className='list_title'>
-              <AtIcon className='list-title-icon' value='shopping-bag' size='18' color='#333'/>
-                我的竞猜
-            </View>
-            <AtIcon value='chevron-right' size='18' color='#7f7f7f'/>
-          </Button>
-            : null}
+          {/*{payEnabled ? <Button onClick={this.onBetClick} className='list button-list'>*/}
+          {/*  <View className='list_title'>*/}
+          {/*    <AtIcon className='list-title-icon' value='shopping-bag' size='18' color='#333'/>*/}
+          {/*      我的竞猜*/}
+          {/*  </View>*/}
+          {/*  <AtIcon value='chevron-right' size='18' color='#7f7f7f'/>*/}
+          {/*</Button>*/}
+          {/*  : null}*/}
           {payEnabled ? <Button onClick={this.onDepositClick} className='list button-list'>
             <View className='list_title'>
               <AtIcon className='list-title-icon' value='money' size='18' color='#333'/>
-              我的绝杀币
+              我的1元币
             </View>
             <AtIcon value='chevron-right' size='18' color='#7f7f7f'/>
           </Button>
@@ -595,13 +595,13 @@ class User extends Component<IProps, PageState> {
             </View>
             <AtIcon value='chevron-right' size='18' color='#7f7f7f'/>
           </Button>
-          <Button onClick={this.onLeagueStatisticsClick} className='list button-list'>
-            <View className='list_title'>
-              <AtIcon className='list-title-icon' value='edit' size='18' color='#333'/>
-              我是记录员
-            </View>
-            <AtIcon value='chevron-right' size='18' color='#7f7f7f'/>
-          </Button>
+          {/*<Button onClick={this.onLeagueStatisticsClick} className='list button-list'>*/}
+          {/*  <View className='list_title'>*/}
+          {/*    <AtIcon className='list-title-icon' value='edit' size='18' color='#333'/>*/}
+          {/*    我是记录员*/}
+          {/*  </View>*/}
+          {/*  <AtIcon value='chevron-right' size='18' color='#7f7f7f'/>*/}
+          {/*</Button>*/}
         </View>
         <View className='qz-user-list-view'>
           <Button onClick={this.onAddressClick} className='list button-list'>

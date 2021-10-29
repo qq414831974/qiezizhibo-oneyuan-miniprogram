@@ -227,7 +227,7 @@ class MatchList extends Component<IProps, PageState> {
                 <View className="at-row at-row--no-wrap">
                   <View className='at-col at-col-12 qz-match-list-order__item-wrap'>
                     {item.gradeInfo && item.gradeInfo.award ? `奖品：${item.gradeInfo.award}` : ""}
-                    {item.gradeInfo && item.gradeInfo.awardDeposit ? `奖品：${getYuan(item.gradeInfo.awardDeposit)}绝杀币` : ""}
+                    {item.gradeInfo && item.gradeInfo.awardDeposit ? `奖品：${getYuan(item.gradeInfo.awardDeposit)}1元币` : ""}
                   </View>
                 </View>
                 : null}

@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
 import {Component} from 'react'
 import {AtModal, AtModalContent, AtModalAction, AtAvatar, AtDivider} from "taro-ui"
-import {View, Text, Button, Input} from '@tarojs/components'
+import {View, Text, Button, Input, Image} from '@tarojs/components'
 import {connect} from 'react-redux'
 
 import Request from '../../utils/request'
@@ -9,6 +9,8 @@ import {getStorage, toLogin} from '../../utils/utils'
 import * as api from '../../constants/api'
 import * as error from '../../constants/error'
 import defaultLogo from '../../assets/default-logo.png'
+import noPerson from '../../assets/no-person.png'
+import arrow_right from '../../assets/arrow-right.png'
 import './index.scss'
 import * as global from "../../constants/global";
 
@@ -55,6 +57,7 @@ type PageDispatchProps = {
 
 type PageOwnProps = {
   gift: any,
+  targetInfo: any,
   num: number,
   giftInfo: GiftInfo,
   matchId: any,
@@ -147,7 +150,7 @@ class ModalGift extends Component<IProps, PageState> {
       openId: openId,
       userNo: userNo,
       type: global.ORDER_TYPE.gift,
-      description: `一元体育-礼物-${gift.id}-${num}-${this.props.leagueId}-${this.props.matchId}-${this.props.heatType}-${this.props.externalId}`,
+      description: `1元体育-礼物-${gift.id}-${num}-${this.props.leagueId}-${this.props.matchId}-${this.props.heatType}-${this.props.externalId}`,
       attach: JSON.stringify({
         matchId: this.props.matchId,
         leagueId: this.props.leagueId,
@@ -187,7 +190,7 @@ class ModalGift extends Component<IProps, PageState> {
       openId: openId,
       userNo: userNo,
       type: global.ORDER_TYPE.gift,
-      description: `一元体育-礼物-${gift.id}-${num}-${this.props.leagueId}-${this.props.matchId}-${this.props.heatType}-${this.props.externalId}`,
+      description: `1元体育-礼物-${gift.id}-${num}-${this.props.leagueId}-${this.props.matchId}-${this.props.heatType}-${this.props.externalId}`,
       attach: JSON.stringify({
         matchId: this.props.matchId,
         leagueId: this.props.leagueId,
@@ -296,17 +299,41 @@ class ModalGift extends Component<IProps, PageState> {
   }
 
   render() {
-    const {isOpened = false, handleCancel, gift, num = 0, giftInfo = null, giftWatchPrice = null, giftWatchEternalPrice = null} = this.props;
+    const {
+      isOpened = false,
+      handleCancel,
+      gift,
+      targetInfo,
+      num = 0,
+      giftInfo = null,
+      giftWatchPrice = null,
+      giftWatchEternalPrice = null
+    } = this.props;
     return (
       <View>
         <AtModal isOpened={isOpened} onClose={handleCancel}>
           {isOpened ? <AtModalContent>
+            <View className="qz-gift-modal-content_top">
+              <View className="qz-gift-modal-content_top--item">
             <View className="center">
               <AtAvatar circle size="small" image={gift && gift.pic ? gift.pic : defaultLogo}/>
             </View>
             <Text className="center gray qz-gift-modal-content_text">
               {gift && gift.name ? `${gift.name}(${num}个)` : "礼物"}
             </Text>
+              </View>
+              <View className="qz-gift-modal-content_top--item__auto">
+                <Image className="qz-gift-modal-content_top--item__arrow" src={arrow_right}/>
+              </View>
+              <View className="qz-gift-modal-content_top--item">
+                <View className="center">
+                  <AtAvatar circle size="small" image={targetInfo && targetInfo.headImg ? targetInfo.headImg : noPerson}/>
+                </View>
+                <Text className="center gray qz-gift-modal-content_text">
+                  {targetInfo && targetInfo.name ? targetInfo.name : "球员"}
+                </Text>
+              </View>
+            </View>
             <AtDivider height={36} lineColor="#E5E5E5"/>
             {giftInfo && giftInfo.price ?
               <View className="black qz-gift-modal-content_tip">

@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
 import {Component} from 'react'
-import {View, Text, Image, ScrollView} from '@tarojs/components'
+import {View, Text, Image, ScrollView, CustomWrapper} from '@tarojs/components'
 import {AtSearchBar, AtDivider, AtButton, AtActivityIndicator, AtLoadMore} from 'taro-ui'
 import RoundButton from '../../components/round-button'
 
@@ -86,7 +86,7 @@ class HeatPlayer extends Component<IProps, PageState> {
       loadingMore: false,
       pulldownRefresh: false,
       heatStatus: null,
-      heatListStyle: "grid",
+      heatListStyle: "vertical",
       _heatRule: null,
     }
   }
@@ -414,14 +414,16 @@ class HeatPlayer extends Component<IProps, PageState> {
               {/*</View>*/}
               {/*<View className="at-col at-col-4">*/}
               <View className="at-col at-col-12">
-                <View className="w-full center qz-heat-player-header__status-title">
-                  活动结束倒计时
-                </View>
-                <View className="w-full center qz-heat-player-header__status-value">
-                  {heatStatus == STATUS.unopen ? `${startDiffDayTime ? `${startDiffDayTime.diffTime ? startDiffDayTime.diffDay + startDiffDayTime.diffTime : ""}` : ""}后开始PK` : ""}
-                  {heatStatus == STATUS.open ? `PK中 ${endDiffDayTime ? `${endDiffDayTime.diffTime ? endDiffDayTime.diffDay + endDiffDayTime.diffTime : ""}` : ""}` : ""}
-                  {heatStatus == STATUS.finish ? `PK已结束` : ""}
-                </View>
+                <CustomWrapper>
+                  <View className="w-full center qz-heat-player-header__status-title">
+                    活动结束倒计时
+                  </View>
+                  <View className="w-full center qz-heat-player-header__status-value">
+                    {heatStatus == STATUS.unopen ? `${startDiffDayTime ? `${startDiffDayTime.diffTime ? startDiffDayTime.diffDay + startDiffDayTime.diffTime : ""}` : ""}后开始PK` : ""}
+                    {heatStatus == STATUS.open ? `PK中 ${endDiffDayTime ? `${endDiffDayTime.diffTime ? endDiffDayTime.diffDay + endDiffDayTime.diffTime : ""}` : ""}` : ""}
+                    {heatStatus == STATUS.finish ? `PK已结束` : ""}
+                  </View>
+                </CustomWrapper>
               </View>
             </View>
           </View>
@@ -464,7 +466,7 @@ class HeatPlayer extends Component<IProps, PageState> {
                     }
                     {isTopHeats ?
                       <View
-                        className={`qz-heat-player__${this.state.heatListStyle}-item-rank qz-heat-player__${this.state.heatListStyle}-item-rank-${isTopHeats}`}>
+                        className={`qz-heat-player__${this.state.heatListStyle}-item-rank qz-heat-player__${this.state.heatListStyle}-item-rank-${isTopHeats} ${heatRule && heatRule.cashAvailable ? `qz-heat-player__${this.state.heatListStyle}-item-rank-cash` : ""}`}>
                       </View> : null}
                     {this.state.heatListStyle == "vertical" && percent ?
                       <View className={`qz-heat-player__${this.state.heatListStyle}-item-percent`}>

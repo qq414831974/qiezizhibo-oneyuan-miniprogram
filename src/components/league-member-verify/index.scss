@@ -92,7 +92,7 @@ $float-layout-timer: 300ms;
 
     &-item {
       border-radius: 20px;
-      border: 1px solid $color-bg-orange-main;
+      border: 1px solid $color-bg-green-main;
       width: 200px;
       margin: 0 10px;
 
@@ -122,14 +122,14 @@ $float-layout-timer: 300ms;
     font-size: $font-size-base;
     color: $color-text-base-inverse;
     margin-top: 60px;
-    background-color: $color-bg-orange-main;
+    background-color: $color-bg-green-main;
     width: 60%;
     margin-bottom: 20px;
   }
 
   &__button:active {
     transform: scale(1.01);
-    background-color: tint($color-bg-orange-main, 10%) !important;
+    background-color: tint($color-bg-green-main, 10%) !important;
   }
 
   .layout {
@@ -140,7 +140,7 @@ $float-layout-timer: 300ms;
       padding: $spacing-v-md;
       line-height: $line-height-zh;
       padding-top: $spacing-v-md;
-      background-color: $color-bg-orange-main;
+      background-color: $color-bg-green-main;
       border-radius: 30px 30px 0 0;
 
       &__title {

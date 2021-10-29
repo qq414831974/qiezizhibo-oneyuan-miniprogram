@@ -89,7 +89,7 @@ class ModalDeposit extends Component<IProps, PageState> {
     return (
       <View>
         <AtModal isOpened={isOpened} onClose={handleCancel}>
-          <AtModalHeader>选择充值绝杀币数量</AtModalHeader>
+          <AtModalHeader>选择充值1元币数量</AtModalHeader>
           {isOpened ? <AtModalContent>
             <View className="qz-deposit-modal__grid">
               {deposit_price && deposit_price.map((data: any) =>
@@ -97,7 +97,7 @@ class ModalDeposit extends Component<IProps, PageState> {
                   className={`qz-deposit-modal__grid-item ${data == currentDeposit ? "qz-deposit-modal__grid-item-active" : ""}`}
                   key={data}
                   onClick={this.handleDepositItemClick.bind(this, data)}>
-                  <View className="qz-deposit-modal__grid-item-text">{data}绝杀币</View>
+                  <View className="qz-deposit-modal__grid-item-text">{data}1元币</View>
                 </View>
               )}
             </View>
@@ -107,7 +107,7 @@ class ModalDeposit extends Component<IProps, PageState> {
                 type='number'
                 placeholderClass="base-font-size"
                 placeholder={isOpened ? "自定义面值" : undefined}
-                className="w-full qz-input-no-padding"
+                className="w-full qz-at-input-no-padding"
                 value={this.state.inputValue}
                 onChange={this.handleInputChange}/>
             </View>

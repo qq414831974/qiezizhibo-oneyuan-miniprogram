@@ -93,7 +93,7 @@ class ModalPhone extends Component<IProps, PageState> {
           </Text>
           <AtDivider height={48} lineColor="#E5E5E5"/>
           <View className="light-gray qz-phone-modal-content_tip">
-            • 一元体育将获得您的手机号
+            • 1元体育将获得您的手机号
           </View>
           <View className="light-gray qz-phone-modal-content_tip">
             • 请验证手机号

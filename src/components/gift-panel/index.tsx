@@ -93,6 +93,13 @@ class GiftPanel extends Component<IProps, PageState> {
   //   }
   // }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    const {isOpened} = nextProps;
+    if (isOpened !== this.props.isOpened) {
+      this.setState({giftConfirmOpen: false});
+    }
+  }
+
   getGiftGrowthByType = (gift: any, type, num) => {
     if (gift == null || gift.growth == null) {
       return null;
@@ -272,6 +279,18 @@ class GiftPanel extends Component<IProps, PageState> {
     }
     return null;
   }
+  getTargetInfo = () => {
+    if (this.props.heatType == global.HEAT_TYPE.TEAM_HEAT || this.props.heatType == global.HEAT_TYPE.LEAGUE_TEAM_HEAT) {
+      if (this.props.supportTeam) {
+        return this.props.supportTeam;
+      }
+    } else if (this.props.heatType == global.HEAT_TYPE.PLAYER_HEAT || this.props.heatType == global.HEAT_TYPE.LEAGUE_PLAYER_HEAT) {
+      if (this.props.supportPlayer) {
+        return this.props.supportPlayer;
+      }
+    }
+    return null;
+  }
   clearCurrentGift = () => {
     this.setState({currentGift: null, currentNum: 0});
   }
@@ -311,7 +330,7 @@ class GiftPanel extends Component<IProps, PageState> {
             <View className="qz-gifts__title-heat"><Image src={flame}/><Text>+{heat}</Text></View> : null}
           {discountPrice ?
             <View
-              className="qz-gifts__title-price">花费绝杀币：{currentGift.type == global.GIFT_TYPE.CHARGE ? discountPrice : "免费"}</View>
+              className="qz-gifts__title-price">花费1元币：{currentGift.type == global.GIFT_TYPE.CHARGE ? discountPrice : "免费"}</View>
             : null}
           {realPrice ?
             <View className="qz-gifts__title-discount">(原价{realPrice})</View>
@@ -340,7 +359,7 @@ class GiftPanel extends Component<IProps, PageState> {
                             <Text>{data.name}</Text>
                           </View>
                           {data.type == global.GIFT_TYPE.CHARGE ? <View className="qz-gifts__grid-item-price">
-                              <View>{getYuan(data.price)}绝杀币</View>
+                              <View>{getYuan(data.price)}1元币</View>
                             </View> :
                             <View className="qz-gifts__grid-item-price">
                               <Text>{data.limitRemain > 0 ? `免费(余${data.limitRemain})` : "分享群得免费礼物"}</Text>
@@ -425,6 +444,7 @@ class GiftPanel extends Component<IProps, PageState> {
                 giftWatchEternalPrice={giftWatchEternalPrice}
                 isOpened={this.state.giftConfirmOpen}
                 gift={this.state.currentGift}
+                targetInfo={this.getTargetInfo()}
                 num={this.state.currentNum}
                 matchId={this.props.matchInfo ? this.props.matchInfo.id : null}
                 leagueId={this.props.leagueId ? this.props.leagueId : null}

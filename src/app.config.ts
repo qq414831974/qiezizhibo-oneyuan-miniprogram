@@ -39,12 +39,12 @@ export default {
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: '一元体育',
+    navigationBarTitleText: '1元体育',
     navigationBarTextStyle: 'black'
   },
   tabBar: {
     color: "#666",
-    selectedColor: "#ff9900",
+    selectedColor: "#3bb36b",
     backgroundColor: "#fafafa",
     borderStyle: 'white',
     list: [{
@@ -54,13 +54,13 @@ export default {
       text: "首页"
     }, {
       pagePath: "pages/match/match",
-      iconPath: "./assets/tab-bar/oneyuan.png",
-      selectedIconPath: "./assets/tab-bar/oneyuan-on.png",
+      iconPath: "./assets/tab-bar/play.png",
+      selectedIconPath: "./assets/tab-bar/play-on.png",
       text: "比赛"
     }, {
       pagePath: "pages/league/league",
-      iconPath: "./assets/tab-bar/cup.png",
-      selectedIconPath: "./assets/tab-bar/cup-on.png",
+      iconPath: "./assets/tab-bar/oneyuan.png",
+      selectedIconPath: "./assets/tab-bar/oneyuan-on.png",
       text: "赛事"
     }, {
       pagePath: "pages/user/user",
@@ -71,7 +71,7 @@ export default {
   },
   permission: {
     "scope.userLocation": {
-      "desc": "一元体育将获得您的位置信息以获取最佳体验"
+      "desc": "1元体育将获得您的位置信息以获取最佳体验"
     }
   }
 }

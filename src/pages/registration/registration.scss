@@ -101,7 +101,7 @@
       button {
         font-size: $font-size-sm !important;
         color: $color-text-base-inverse !important;
-        background-color: $color-bg-orange-main;
+        background-color: $color-bg-green-main;
       }
     }
 
@@ -300,12 +300,12 @@
       button {
         font-size: $font-size-base !important;
         color: $color-text-base-inverse !important;
-        background-color: #ff9900 !important;
+        background-color: #3bb36b !important;
       }
 
       button:active {
         transform: scale(1.01);
-        background-color: tint(#ff9900, 10%) !important;
+        background-color: tint(#3bb36b, 10%) !important;
       }
     }
 
@@ -460,7 +460,7 @@
 
     .contract {
       font-size: $font-size-xl;
-      color: $color-bg-orange-main;
+      color: $color-bg-green-main;
     }
 
     .contract-agreement {
@@ -585,12 +585,12 @@
     width: 80%;
     font-size: $font-size-base !important;
     color: $color-text-base-inverse !important;
-    background-color: $color-bg-orange-main !important;
+    background-color: $color-bg-green-main !important;
   }
 
   button:active {
     transform: scale(1.01);
-    background-color: tint($color-bg-orange-main, 10%) !important;
+    background-color: tint($color-bg-green-main, 10%) !important;
   }
 }
 

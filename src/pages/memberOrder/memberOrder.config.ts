@@ -1,6 +1,6 @@
 export default {
   navigationBarTitleText: '我的联赛会员',
-  navigationBarBackgroundColor: '#ff9900',
+  navigationBarBackgroundColor: '#3bb36b',
   navigationBarTextStyle: 'white',
   navigationStyle: 'custom',
 }

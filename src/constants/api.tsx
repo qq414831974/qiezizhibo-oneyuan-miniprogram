@@ -83,6 +83,7 @@ export const API_TEAMS = `${oneyuan_service}/teams`;
 //player
 export const API_PLAYER = (id) => `${oneyuan_service}/player/${id}`;
 export const API_PLAYERS = `${oneyuan_service}/player`;
+export const API_PLAYER_SHIRTNUM = `${oneyuan_service}/player/shirtNum`;
 export const API_PLAYER_BEST = `${oneyuan_service}/player/best`;
 export const API_PLAYER_MEDIA = `${media_service}/media/player`;
 export const API_PLAYER_VERIFY  = `${oneyuan_service}/player/verify`;

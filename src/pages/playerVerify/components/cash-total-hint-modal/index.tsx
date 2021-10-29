@@ -53,7 +53,7 @@ class ModalCashTotalHint extends Component<IProps, PageState> {
           </Text>
           <AtDivider height={48} lineColor="#E5E5E5"/>
           <Text className="gray qz-cash-total-hint-modal-content_tip">
-            球员参与的球星夸夸榜活动中，
+            球员参与的人气PK活动中，
           </Text>
           {percent != null ? <Text className="highlight qz-cash-total-hint-modal-content_tip">
             可预提现{percent}%
@@ -64,7 +64,7 @@ class ModalCashTotalHint extends Component<IProps, PageState> {
             提现金额将在
           </Text>}
           <Text className="highlight qz-cash-total-hint-modal-content_tip">
-            球星夸夸榜结束后3个工作日
+            人气PK结束后3个工作日
           </Text>
           <Text className="gray qz-cash-total-hint-modal-content_tip">
             内系统根据球员排名，审核并结算剩余提现金额，

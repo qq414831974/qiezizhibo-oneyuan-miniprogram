@@ -146,7 +146,7 @@ class Registration extends Component<IProps, PageState> {
 
   $setShareTitle = () => {
     if (this.teamId == null) {
-      return this.state.leagueInfo ? this.state.leagueInfo.name : "一元体育赛事报名";
+      return this.state.leagueInfo ? this.state.leagueInfo.name : "1元体育赛事报名";
     }
     const teamInfo = this.state.teamInfo;
     return `${teamInfo.name}报名开始`;

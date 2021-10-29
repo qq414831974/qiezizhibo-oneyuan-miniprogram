@@ -189,7 +189,7 @@ class Search extends Component<IProps, PageState> {
       <ScrollView scrollY onScrollToLower={this.onScrollToBottom}
                   className='qz-search-scroll-content'>
         <NavBar
-          title='一元体育'
+          title='1元体育'
           back
           ref={ref => {
             this.navRef = ref;

@@ -143,7 +143,7 @@ class LeagueMatchStatistics extends Component<IProps, PageState> {
           handleConfirm={this.onEncryptionConfirm}
           handleCancel={this.onEncryptionCancel}/>
         <NavBar
-          title='一元体育'
+          title='1元体育'
           back
           ref={ref => {
             this.navRef = ref;

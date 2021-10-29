@@ -1,7 +1,16 @@
 import Taro, {getCurrentInstance} from '@tarojs/taro';
 import {Component} from 'react'
-import {AtToast, AtActivityIndicator, AtModal, AtModalHeader, AtModalContent, AtModalAction} from "taro-ui"
-import {View, Text, Image, Button} from '@tarojs/components'
+import {
+  AtToast,
+  AtActivityIndicator,
+  AtModal,
+  AtModalHeader,
+  AtModalContent,
+  AtModalAction,
+  AtList,
+  AtListItem
+} from "taro-ui"
+import {View, Text, Image, Button, Picker} from '@tarojs/components'
 import {connect} from 'react-redux'
 
 import './matchStatistics.scss'
@@ -9,7 +18,9 @@ import Request from "../../utils/request";
 import * as api from "../../constants/api";
 import logo from "../../assets/default-logo.png"
 
-type PageStateProps = {}
+type PageStateProps = {
+  userInfo: any;
+}
 
 type PageDispatchProps = {}
 
@@ -36,6 +47,10 @@ type PageState = {
   eventOpen: boolean;
   switch_againstIndex: any;
   switch_section: any;
+  changeShirtNumShow: boolean;
+  shirtNumRange: any;
+  shirtNum: any;
+  playerShirtNum: any;
 }
 
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps
@@ -81,11 +96,20 @@ class MatchStatistics extends Component<IProps, PageState> {
       eventOpen: false,
       switch_againstIndex: "1",
       switch_section: "1",
+      changeShirtNumShow: false,
+      shirtNumRange: null,
+      shirtNum: [0, 0],
+      playerShirtNum: 0,
     }
   }
 
   componentWillMount() {
     this.matchId = this.getParamId();
+    let range = [];
+    for (let i = 0; i <= 9; i++) {
+      range.push(i);
+    }
+    this.setState({shirtNumRange: [range, range]});
   }
 
   componentDidMount() {
@@ -346,6 +370,63 @@ class MatchStatistics extends Component<IProps, PageState> {
   }
   onEventCancel = () => {
     this.setState({eventOpen: false})
+  }
+  onChangeShirtNumClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    let shirtNum = this.state.currentPlayer.shirtNum;
+    if (shirtNum == null) {
+      shirtNum = 0;
+    }
+    this.setState({changeShirtNumShow: true, shirtNum: this.getShirtNumArray(shirtNum), playerShirtNum: shirtNum})
+  }
+  onChangeShirtNumCancel = () => {
+    this.setState({changeShirtNumShow: false, shirtNum: this.getShirtNumArray(this.state.playerShirtNum)})
+  }
+  onShirtNumChange = (e) => {
+    this.setState({shirtNum: e.detail.value})
+  }
+  getShirtNumArray = (playerShirtNum) => {
+    if (playerShirtNum == null) {
+      playerShirtNum = 0;
+    }
+    return [Math.floor(playerShirtNum / 10), playerShirtNum % 10]
+  }
+  getShirtNumString = (shirtNumArray) => {
+    if (shirtNumArray == null) {
+      return 0;
+    }
+    if (shirtNumArray[0] == null) {
+      shirtNumArray[0] = 0;
+    }
+    if (shirtNumArray[1] == null) {
+      shirtNumArray[1] = 0;
+    }
+    return shirtNumArray[0] * 10 + shirtNumArray[1];
+  }
+  onChangeShirtNumConfirm = () => {
+    const teamId = this.state.currentTeamisHost ? this.state.matchInfo.againsts[this.state.againstIndex].hostTeamId : this.state.matchInfo.againsts[this.state.againstIndex].guestTeamId;
+    const playerId = this.state.currentPlayer.id;
+    new Request().post(api.API_PLAYER_SHIRTNUM, {
+      teamId: teamId,
+      playerId: playerId,
+      shirtNum: this.getShirtNumString(this.state.shirtNum),
+      userNo: this.props.userInfo ? this.props.userInfo.userNo : null,
+    }).then((data: any) => {
+      if (data) {
+        Taro.showToast({title: "修改成功", icon: "none"})
+      } else {
+        Taro.showToast({title: "修改失败", icon: "none"})
+      }
+      this.refresh();
+    });
+    this.setState({
+      currentEvent: null,
+      currentPlayer: null,
+      currentTeamisHost: null,
+      eventOpen: false,
+      changeShirtNumShow: false
+    })
   }
 
   render() {
@@ -609,6 +690,7 @@ class MatchStatistics extends Component<IProps, PageState> {
             <View className="qz-match-statistics__event-container">
               <View/>
               <View>
+                <Button className="button-change" onClick={this.onChangeShirtNumClick}>修改号码</Button>
                 <Button className="button-foul" onClick={this.onEventClick.bind(this, 9)}>犯规</Button>
                 <Button onClick={this.onEventClick.bind(this, 16)}>抢断</Button>
                 <Button onClick={this.onEventClick.bind(this, 17)}>篮板</Button>
@@ -619,12 +701,40 @@ class MatchStatistics extends Component<IProps, PageState> {
             </View>
           </View> : null}
         <AtToast isOpened={loading} text="加载中..." status="loading"/>
+        <AtModal
+          className="modal-landscape qz-match-statistics__change-shirtNum--modal"
+          isOpened={this.state.changeShirtNumShow}
+          onClose={this.onChangeShirtNumCancel}>
+          <AtModalHeader>修改号码</AtModalHeader>
+          <AtModalContent>
+            <View className="w-full center">
+              <Picker
+                mode='multiSelector'
+                value={this.state.shirtNum}
+                range={this.state.shirtNumRange}
+                onChange={this.onShirtNumChange}>
+                <AtList>
+                  <AtListItem
+                    className="qz-match-statistics__change-shirtNum"
+                    title='请选择号码'
+                    extraText={this.getShirtNumString(this.state.shirtNum)}/>
+                </AtList>
+              </Picker>
+            </View>
+          </AtModalContent>
+          <AtModalAction>
+            <Button onClick={this.onChangeShirtNumCancel}>取消</Button>
+            <Button onClick={this.onChangeShirtNumConfirm}>确定</Button>
+          </AtModalAction>
+        </AtModal>
       </View>
     )
   }
 }
 
-const mapStateToProps = () => {
-  return {}
+const mapStateToProps = (state) => {
+  return {
+    userInfo: state.user.userInfo,
+  }
 }
 export default connect(mapStateToProps)(MatchStatistics)

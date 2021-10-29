@@ -6,7 +6,7 @@
   &__header {
     display: flex;
     height: 50px;
-    background: $color-bg-orange-main;
+    background: $color-bg-green-main;
     position: relative;
     align-items: center;
 
@@ -39,7 +39,7 @@
 
       &__round {
         height: 50%;
-        background: $color-bg-orange-main;
+        background: $color-bg-green-main;
         color: $color-text-base-inverse;
       }
     }
@@ -200,7 +200,7 @@
 
     .player-shirt {
       border-radius: 50%;
-      background-color: $color-bg-orange-main;
+      background-color: $color-bg-green-main;
       height: 30px;
       width: 30px;
       text-align: center;
@@ -261,7 +261,7 @@
 
       .event-active {
         color: $color-text-base-inverse;
-        background-color: $color-bg-orange-main;
+        background-color: $color-bg-green-main;
       }
     }
   }
@@ -296,7 +296,7 @@
     .player-shirt {
       flex: 0 1 auto;
       border-radius: 50%;
-      background-color: $color-bg-orange-main;
+      background-color: $color-bg-green-main;
       height: 30px;
       width: 30px;
       text-align: center;
@@ -340,7 +340,7 @@
     display: flex;
 
     .section-active {
-      background-color: $color-bg-orange-main;
+      background-color: $color-bg-green-main;
     }
 
     view {
@@ -360,7 +360,7 @@
     margin-top: 20px;
 
     &__team-active {
-      background-color: $color-bg-orange-main;
+      background-color: $color-bg-green-main;
       color: $color-text-base-inverse;
     }
 
@@ -405,6 +405,13 @@
         margin: 0 5px;
       }
     }
+  }
+
+  &__change-shirtNum {
+    font-size: 16px;
+  }
+  &__change-shirtNum--modal {
+    z-index: $zindex-action-sheet;
   }
 
   &__event {
@@ -479,6 +486,11 @@
 
       .button-foul {
         background-color: $color-highlight;
+        color: $color-text-base-inverse;
+      }
+
+      .button-change {
+        background-color: $color-bg-blue-main;
         color: $color-text-base-inverse;
       }
     }

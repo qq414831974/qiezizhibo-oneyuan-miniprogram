@@ -22,11 +22,11 @@
   }
 
   .at-tabs__item--active {
-    color: $color-bg-orange-main;
+    color: $color-bg-green-main;
     background-color: $color-white;
 
     .at-tabs__item-underline {
-      background-color: $color-bg-orange-main;
+      background-color: $color-bg-green-main;
     }
   }
 
@@ -47,7 +47,7 @@
     }
 
     .highlight {
-      color: $color-bg-orange-main;
+      color: $color-bg-green-main;
     }
 
     view:first-child {
@@ -81,6 +81,6 @@
   }
 
   text:last-child {
-    color: $color-bg-orange-main;
+    color: $color-bg-green-main;
   }
 }

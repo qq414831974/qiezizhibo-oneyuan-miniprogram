@@ -6,7 +6,7 @@
 
   &-header {
     width: 100%;
-    background-color: $color-bg-orange-main;
+    background-color: $color-bg-green-main;
     //position: fixed;
     //top: 0;
     z-index: 800;
@@ -36,7 +36,7 @@
 
 .qz-league-manager-header {
   width: 100%;
-  background-color: $color-bg-orange-main;
+  background-color: $color-bg-green-main;
   //position: fixed;
   //top: 0;
   z-index: $zindex-nav;
@@ -49,7 +49,7 @@
     justify-content: center;
     height: 70px;
     position: fixed;
-    background-color: $color-bg-orange-main;
+    background-color: $color-bg-green-main;
     padding: 0 10px;
     box-sizing: border-box;
 
@@ -127,7 +127,9 @@
   position: fixed;
   bottom: 35%;
   right: 16px;
-  animation: zoom ease-in-out 1s infinite;
+  .qz-league-manager-fab-image {
+    animation: zoom ease-in-out 1s infinite;
+  }
 }
 
 .qz-league-manager-fab-betrank {

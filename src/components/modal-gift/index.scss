@@ -26,6 +26,24 @@
   margin-bottom: $spacing-v-sm;
 }
 
+.qz-gift-modal-content_top {
+  display: flex;
+
+  &--item__auto {
+    flex: 0 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &--item__arrow {
+    height: 60px;
+    width: 60px;
+  }
+  &--item {
+    flex: 1 1;
+  }
+}
+
 .qz-gift-modal-content_text {
   font-size: $font-size-xs;
   margin-top: $spacing-v-sm;

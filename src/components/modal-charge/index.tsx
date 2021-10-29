@@ -137,12 +137,12 @@ class ModalCharge extends Component<IProps, PageState> {
     let type = charge.type;
     let attach = JSON.stringify({matchId: charge.matchId, type: charge.type, isMonthly: isMonth});
     if (charge.type == global.ORDER_TYPE.live) {
-      desc = `一元体育-直播-${charge.matchId}`;
+      desc = `1元体育-直播-${charge.matchId}`;
     } else if (charge.type == global.ORDER_TYPE.record) {
-      desc = `一元体育-录播-${charge.matchId}`;
+      desc = `1元体育-录播-${charge.matchId}`;
     }
     if (isMonopoly) {
-      desc = `一元体育-买断-${charge.matchId}`;
+      desc = `1元体育-买断-${charge.matchId}`;
       type = global.ORDER_TYPE.monopoly;
       attach = JSON.stringify({
         matchId: charge.matchId,
@@ -199,12 +199,12 @@ class ModalCharge extends Component<IProps, PageState> {
     let type = charge.type;
     let attach = JSON.stringify({matchId: charge.matchId, type: charge.type, isMonthly: isMonth});
     if (charge.type == global.ORDER_TYPE.live) {
-      desc = `一元体育-直播-${charge.matchId}`;
+      desc = `1元体育-直播-${charge.matchId}`;
     } else if (charge.type == global.ORDER_TYPE.record) {
-      desc = `一元体育-录播-${charge.matchId}`;
+      desc = `1元体育-录播-${charge.matchId}`;
     }
     if (isMonopoly) {
-      desc = `一元体育-买断-${charge.matchId}`;
+      desc = `1元体育-买断-${charge.matchId}`;
       type = global.ORDER_TYPE.monopoly;
       attach = JSON.stringify({
         matchId: charge.matchId,
@@ -345,7 +345,7 @@ class ModalCharge extends Component<IProps, PageState> {
                 </View> : null}
               {(charge && charge.monopolyOnly) || !giftDiscount ? null :
                 <View className="light-gray bold qz-pay-modal-content_tip">
-                  • 在本直播间内投票超过{getYuan(this.props.giftDiscountPrice)}绝杀币（{getYuan(this.props.giftDiscountPrice)}元）即可观看比赛录像
+                  • 在本直播间内投票超过{getYuan(this.props.giftDiscountPrice)}1元币（{getYuan(this.props.giftDiscountPrice)}元）即可观看比赛录像
                 </View>}
             </View>
           </AtModalContent> : null}

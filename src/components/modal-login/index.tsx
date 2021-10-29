@@ -139,7 +139,7 @@ class ModalLogin extends Component<IProps, PageState> {
           </Text>
           <AtDivider height={48} lineColor="#E5E5E5"/>
           <Text className="light-gray qz-login-modal-content_tip">
-            • 一元体育将获得您的公开信息（昵称、头像等）
+            • 1元体育将获得您的公开信息（昵称、头像等）
           </Text>
         </AtModalContent> : null}
         <AtModalAction>

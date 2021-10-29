@@ -69,7 +69,7 @@ class ModalAlbum extends Component<IProps, PageState> {
           </Text>
           <AtDivider height={48} lineColor="#E5E5E5"/>
           <Text className="light-gray qz-album-modal-content_tip">
-            • 一元体育将保存图片到您的相册
+            • 1元体育将保存图片到您的相册
           </Text>
         </AtModalContent> : null}
         <AtModalAction>

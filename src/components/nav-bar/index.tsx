@@ -175,7 +175,7 @@ class NavBar extends Component<IProps, PageState> {
 
   static defaultProps = {
     extClass: '',
-    background: '#ff9900', //导航栏背景
+    background: '#3bb36b', //导航栏背景
     color: '#ffffff',
     title: '',
     searchText: '点我搜索',

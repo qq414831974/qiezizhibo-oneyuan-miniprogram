@@ -18,13 +18,13 @@
     width: 90%;
     font-size: $font-size-base !important;
     color: $color-text-base-inverse !important;
-    background-color: $color-bg-orange-main !important;
+    background-color: $color-bg-green-main !important;
     margin-top: $spacing-v-lg;
   }
 
   button:active {
     transform: scale(1.01);
-    background-color: tint($color-bg-orange-main, 10%) !important;
+    background-color: tint($color-bg-green-main, 10%) !important;
   }
 
   &-title {

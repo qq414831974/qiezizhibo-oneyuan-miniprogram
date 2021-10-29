@@ -14,7 +14,7 @@
   align-items: center;
   padding: 50px 0;
   height: 20%;
-  background-color: $color-bg-orange-main;
+  background-color: $color-bg-green-main;
   position: relative;
 
   &__button {
@@ -23,8 +23,8 @@
     right: 64px;
     border-radius: 30px !important;
     padding: 0 32px !important;
-    color: $color-bg-orange-main;
-    border: 1PX solid $color-bg-orange-main;
+    color: $color-bg-green-main;
+    border: 1PX solid $color-bg-green-main;
   }
 
   &__title {
@@ -83,7 +83,7 @@
       margin-top: -0.5 * $font-size-base;
       width: 4px;
       height: $font-size-base;
-      background-color: $color-bg-orange-main;
+      background-color: $color-bg-green-main;
       box-shadow: 0 .14933rem .256rem 0 rgba(97, 144, 232, .2);
       border-radius: 2px;
     }

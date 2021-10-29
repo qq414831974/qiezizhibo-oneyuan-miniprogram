@@ -113,7 +113,7 @@ class Series extends Component<IProps, PageState> {
     return (
       <View className='qz-series-content'>
         <NavBar
-          title='一元体育'
+          title='1元体育'
           back
           ref={ref => {
             this.navRef = ref;
