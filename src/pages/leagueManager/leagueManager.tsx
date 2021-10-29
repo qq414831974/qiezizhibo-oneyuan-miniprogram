@@ -1466,42 +1466,42 @@ class LeagueManager extends Component<IProps, PageState> {
           onHeatRuleClick={this.onHeatRewardClick}
           player={this.state.currentToCashPlayer}
         />
-        {!this.props.giftEnabled && this.state.heatType != null ?
-          <RectFab
-            className="qz-fab-rect-multi-line"
-            onClick={this.handleHeatRankClick}
-            background="#ECF5FD"
-            top={`calc(${this.navRef ? this.navRef.state.configStyle.navHeight : 0}px + 35px + 44px + 42px)`}
-          >
-            <View className="qz-league-manager-heat">
-              <View className="w-full center">
-                <Image className="qz-league-manager-heat-title" src={heatRankIcon}/>
-              </View>
-              <View className="w-full center qz-league-manager-heat-items">
-                {this.state.topSixHeats && this.state.topSixHeats.filter(record => record.number <= 3).map(data => {
-                  if (this.state.heatType && (this.state.heatType == global.HEAT_TYPE.PLAYER_HEAT || this.state.heatType == global.HEAT_TYPE.LEAGUE_PLAYER_HEAT)) {
-                    return <Image key={data.id} className="qz-league-manager-heat-img-overlap"
-                                  src={data.player && data.player.headImg ? data.player.headImg : noperson}/>
-                  }
-                  return <Image key={data.id} className="qz-league-manager-heat-img-overlap"
-                                src={data.team && data.team.headImg ? data.team.headImg : noperson}/>
-                })}
-              </View>
-              <View className='at-icon at-icon-chevron-right qz-league-manager-heat-arrow'/>
-            </View>
-          </RectFab>
-          : null
-        }
-        {!this.props.giftEnabled ?
-          <HeatRank
-            leagueId={this.leagueId}
-            heatRanks={this.state.topSixHeats}
-            loading={this.state.teamHeatLoading || this.state.playerHeatLoading}
-            isOpened={this.state.heatRankShow}
-            handleCancel={this.handleHeatRankCancel}
-            heatType={this.state.heatType}/>
-          : null
-        }
+        {/*{!this.props.giftEnabled && this.state.heatType != null ?*/}
+        {/*  <RectFab*/}
+        {/*    className="qz-fab-rect-multi-line"*/}
+        {/*    onClick={this.handleHeatRankClick}*/}
+        {/*    background="#ECF5FD"*/}
+        {/*    top={`calc(${this.navRef ? this.navRef.state.configStyle.navHeight : 0}px + 35px + 44px + 42px)`}*/}
+        {/*  >*/}
+        {/*    <View className="qz-league-manager-heat">*/}
+        {/*      <View className="w-full center">*/}
+        {/*        <Image className="qz-league-manager-heat-title" src={heatRankIcon}/>*/}
+        {/*      </View>*/}
+        {/*      <View className="w-full center qz-league-manager-heat-items">*/}
+        {/*        {this.state.topSixHeats && this.state.topSixHeats.filter(record => record.number <= 3).map(data => {*/}
+        {/*          if (this.state.heatType && (this.state.heatType == global.HEAT_TYPE.PLAYER_HEAT || this.state.heatType == global.HEAT_TYPE.LEAGUE_PLAYER_HEAT)) {*/}
+        {/*            return <Image key={data.id} className="qz-league-manager-heat-img-overlap"*/}
+        {/*                          src={data.player && data.player.headImg ? data.player.headImg : noperson}/>*/}
+        {/*          }*/}
+        {/*          return <Image key={data.id} className="qz-league-manager-heat-img-overlap"*/}
+        {/*                        src={data.team && data.team.headImg ? data.team.headImg : noperson}/>*/}
+        {/*        })}*/}
+        {/*      </View>*/}
+        {/*      <View className='at-icon at-icon-chevron-right qz-league-manager-heat-arrow'/>*/}
+        {/*    </View>*/}
+        {/*  </RectFab>*/}
+        {/*  : null*/}
+        {/*}*/}
+        {/*{!this.props.giftEnabled ?*/}
+        {/*  <HeatRank*/}
+        {/*    leagueId={this.leagueId}*/}
+        {/*    heatRanks={this.state.topSixHeats}*/}
+        {/*    loading={this.state.teamHeatLoading || this.state.playerHeatLoading}*/}
+        {/*    isOpened={this.state.heatRankShow}*/}
+        {/*    handleCancel={this.handleHeatRankCancel}*/}
+        {/*    heatType={this.state.heatType}/>*/}
+        {/*  : null*/}
+        {/*}*/}
       </View>
     )
   }
